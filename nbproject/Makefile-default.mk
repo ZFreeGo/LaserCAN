@@ -1,0 +1,288 @@
+#
+# Generated Makefile - do not edit!
+#
+# Edit the Makefile in the project folder instead (../Makefile). Each target
+# has a -pre and a -post target defined where you can add customized code.
+#
+# This makefile implements configuration specific macros and targets.
+
+
+# Include project Makefile
+ifeq "${IGNORE_LOCAL}" "TRUE"
+# do not include local makefile. User is passing all local related variables already
+else
+include Makefile
+# Include makefile containing local settings
+ifeq "$(wildcard nbproject/Makefile-local-default.mk)" "nbproject/Makefile-local-default.mk"
+include nbproject/Makefile-local-default.mk
+endif
+endif
+
+# Environment
+MKDIR=gnumkdir -p
+RM=rm -f 
+MV=mv 
+CP=cp 
+
+# Macros
+CND_CONF=default
+ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+IMAGE_TYPE=debug
+OUTPUT_SUFFIX=elf
+DEBUGGABLE_SUFFIX=elf
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/LaserCAN.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+else
+IMAGE_TYPE=production
+OUTPUT_SUFFIX=hex
+DEBUGGABLE_SUFFIX=elf
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/LaserCAN.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+endif
+
+# Object Directory
+OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
+
+# Distribution Directory
+DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
+
+# Source Files Quoted if spaced
+SOURCEFILES_QUOTED_IF_SPACED=Source/Driver/DeviceIO.c Source/Driver/EEPROMOperate.c Source/Driver/Timer.c Source/Driver/Usart.c Source/Driver/traps.c Source/SerialPort/Action.c Source/SerialPort/CRC16.c Source/SerialPort/RtuFrame.c Source/main.c Source/Driver/CAN.c Source/CANTransmission/Buffer.c
+
+# Object Files Quoted if spaced
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Source/Driver/DeviceIO.o ${OBJECTDIR}/Source/Driver/EEPROMOperate.o ${OBJECTDIR}/Source/Driver/Timer.o ${OBJECTDIR}/Source/Driver/Usart.o ${OBJECTDIR}/Source/Driver/traps.o ${OBJECTDIR}/Source/SerialPort/Action.o ${OBJECTDIR}/Source/SerialPort/CRC16.o ${OBJECTDIR}/Source/SerialPort/RtuFrame.o ${OBJECTDIR}/Source/main.o ${OBJECTDIR}/Source/Driver/CAN.o ${OBJECTDIR}/Source/CANTransmission/Buffer.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/Source/Driver/DeviceIO.o.d ${OBJECTDIR}/Source/Driver/EEPROMOperate.o.d ${OBJECTDIR}/Source/Driver/Timer.o.d ${OBJECTDIR}/Source/Driver/Usart.o.d ${OBJECTDIR}/Source/Driver/traps.o.d ${OBJECTDIR}/Source/SerialPort/Action.o.d ${OBJECTDIR}/Source/SerialPort/CRC16.o.d ${OBJECTDIR}/Source/SerialPort/RtuFrame.o.d ${OBJECTDIR}/Source/main.o.d ${OBJECTDIR}/Source/Driver/CAN.o.d ${OBJECTDIR}/Source/CANTransmission/Buffer.o.d
+
+# Object Files
+OBJECTFILES=${OBJECTDIR}/Source/Driver/DeviceIO.o ${OBJECTDIR}/Source/Driver/EEPROMOperate.o ${OBJECTDIR}/Source/Driver/Timer.o ${OBJECTDIR}/Source/Driver/Usart.o ${OBJECTDIR}/Source/Driver/traps.o ${OBJECTDIR}/Source/SerialPort/Action.o ${OBJECTDIR}/Source/SerialPort/CRC16.o ${OBJECTDIR}/Source/SerialPort/RtuFrame.o ${OBJECTDIR}/Source/main.o ${OBJECTDIR}/Source/Driver/CAN.o ${OBJECTDIR}/Source/CANTransmission/Buffer.o
+
+# Source Files
+SOURCEFILES=Source/Driver/DeviceIO.c Source/Driver/EEPROMOperate.c Source/Driver/Timer.c Source/Driver/Usart.c Source/Driver/traps.c Source/SerialPort/Action.c Source/SerialPort/CRC16.c Source/SerialPort/RtuFrame.c Source/main.c Source/Driver/CAN.c Source/CANTransmission/Buffer.c
+
+
+CFLAGS=
+ASFLAGS=
+LDLIBSOPTIONS=
+
+############# Tool locations ##########################################
+# If you copy a project from one host to another, the path where the  #
+# compiler is installed may be different.                             #
+# If you open this project with MPLAB X in the new host, this         #
+# makefile will be regenerated and the paths will be corrected.       #
+#######################################################################
+# fixDeps replaces a bunch of sed/cat/printf statements that slow down the build
+FIXDEPS=fixDeps
+
+.build-conf:  ${BUILD_SUBPROJECTS}
+ifneq ($(INFORMATION_MESSAGE), )
+	@echo $(INFORMATION_MESSAGE)
+endif
+	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/LaserCAN.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+
+MP_PROCESSOR_OPTION=30F4011
+MP_LINKER_FILE_OPTION=,--script=p30F4011.gld
+# ------------------------------------------------------------------------------------
+# Rules for buildStep: compile
+ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/Source/Driver/DeviceIO.o: Source/Driver/DeviceIO.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/DeviceIO.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/DeviceIO.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/DeviceIO.c  -o ${OBJECTDIR}/Source/Driver/DeviceIO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/DeviceIO.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/DeviceIO.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/Driver/EEPROMOperate.o: Source/Driver/EEPROMOperate.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/EEPROMOperate.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/EEPROMOperate.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/EEPROMOperate.c  -o ${OBJECTDIR}/Source/Driver/EEPROMOperate.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/EEPROMOperate.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/EEPROMOperate.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/Driver/Timer.o: Source/Driver/Timer.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/Timer.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/Timer.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/Timer.c  -o ${OBJECTDIR}/Source/Driver/Timer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/Timer.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/Timer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/Driver/Usart.o: Source/Driver/Usart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/Usart.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/Usart.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/Usart.c  -o ${OBJECTDIR}/Source/Driver/Usart.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/Usart.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/Usart.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/Driver/traps.o: Source/Driver/traps.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/traps.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/traps.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/traps.c  -o ${OBJECTDIR}/Source/Driver/traps.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/traps.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/traps.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/SerialPort/Action.o: Source/SerialPort/Action.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/SerialPort" 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/Action.o.d 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/Action.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/SerialPort/Action.c  -o ${OBJECTDIR}/Source/SerialPort/Action.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/SerialPort/Action.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/SerialPort/Action.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/SerialPort/CRC16.o: Source/SerialPort/CRC16.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/SerialPort" 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/CRC16.o.d 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/CRC16.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/SerialPort/CRC16.c  -o ${OBJECTDIR}/Source/SerialPort/CRC16.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/SerialPort/CRC16.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/SerialPort/CRC16.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/SerialPort/RtuFrame.o: Source/SerialPort/RtuFrame.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/SerialPort" 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/RtuFrame.o.d 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/RtuFrame.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/SerialPort/RtuFrame.c  -o ${OBJECTDIR}/Source/SerialPort/RtuFrame.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/SerialPort/RtuFrame.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/SerialPort/RtuFrame.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/main.o: Source/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source" 
+	@${RM} ${OBJECTDIR}/Source/main.o.d 
+	@${RM} ${OBJECTDIR}/Source/main.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/main.c  -o ${OBJECTDIR}/Source/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/Driver/CAN.o: Source/Driver/CAN.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/CAN.c  -o ${OBJECTDIR}/Source/Driver/CAN.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/CAN.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/CAN.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/CANTransmission/Buffer.o: Source/CANTransmission/Buffer.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/CANTransmission" 
+	@${RM} ${OBJECTDIR}/Source/CANTransmission/Buffer.o.d 
+	@${RM} ${OBJECTDIR}/Source/CANTransmission/Buffer.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/CANTransmission/Buffer.c  -o ${OBJECTDIR}/Source/CANTransmission/Buffer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+else
+${OBJECTDIR}/Source/Driver/DeviceIO.o: Source/Driver/DeviceIO.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/DeviceIO.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/DeviceIO.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/DeviceIO.c  -o ${OBJECTDIR}/Source/Driver/DeviceIO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/DeviceIO.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/DeviceIO.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/Driver/EEPROMOperate.o: Source/Driver/EEPROMOperate.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/EEPROMOperate.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/EEPROMOperate.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/EEPROMOperate.c  -o ${OBJECTDIR}/Source/Driver/EEPROMOperate.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/EEPROMOperate.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/EEPROMOperate.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/Driver/Timer.o: Source/Driver/Timer.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/Timer.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/Timer.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/Timer.c  -o ${OBJECTDIR}/Source/Driver/Timer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/Timer.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/Timer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/Driver/Usart.o: Source/Driver/Usart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/Usart.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/Usart.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/Usart.c  -o ${OBJECTDIR}/Source/Driver/Usart.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/Usart.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/Usart.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/Driver/traps.o: Source/Driver/traps.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/traps.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/traps.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/traps.c  -o ${OBJECTDIR}/Source/Driver/traps.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/traps.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/traps.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/SerialPort/Action.o: Source/SerialPort/Action.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/SerialPort" 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/Action.o.d 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/Action.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/SerialPort/Action.c  -o ${OBJECTDIR}/Source/SerialPort/Action.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/SerialPort/Action.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/SerialPort/Action.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/SerialPort/CRC16.o: Source/SerialPort/CRC16.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/SerialPort" 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/CRC16.o.d 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/CRC16.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/SerialPort/CRC16.c  -o ${OBJECTDIR}/Source/SerialPort/CRC16.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/SerialPort/CRC16.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/SerialPort/CRC16.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/SerialPort/RtuFrame.o: Source/SerialPort/RtuFrame.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/SerialPort" 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/RtuFrame.o.d 
+	@${RM} ${OBJECTDIR}/Source/SerialPort/RtuFrame.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/SerialPort/RtuFrame.c  -o ${OBJECTDIR}/Source/SerialPort/RtuFrame.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/SerialPort/RtuFrame.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/SerialPort/RtuFrame.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/main.o: Source/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source" 
+	@${RM} ${OBJECTDIR}/Source/main.o.d 
+	@${RM} ${OBJECTDIR}/Source/main.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/main.c  -o ${OBJECTDIR}/Source/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/main.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/Driver/CAN.o: Source/Driver/CAN.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/CAN.c  -o ${OBJECTDIR}/Source/Driver/CAN.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/CAN.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/CAN.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/Source/CANTransmission/Buffer.o: Source/CANTransmission/Buffer.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/CANTransmission" 
+	@${RM} ${OBJECTDIR}/Source/CANTransmission/Buffer.o.d 
+	@${RM} ${OBJECTDIR}/Source/CANTransmission/Buffer.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/CANTransmission/Buffer.c  -o ${OBJECTDIR}/Source/CANTransmission/Buffer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+endif
+
+# ------------------------------------------------------------------------------------
+# Rules for buildStep: assemble
+ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+else
+endif
+
+# ------------------------------------------------------------------------------------
+# Rules for buildStep: assemblePreproc
+ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+else
+endif
+
+# ------------------------------------------------------------------------------------
+# Rules for buildStep: link
+ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+dist/${CND_CONF}/${IMAGE_TYPE}/LaserCAN.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/LaserCAN.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -legacy-libc   -mreserve=data@0x800:0x81F -mreserve=data@0x820:0x821 -mreserve=data@0x822:0x823 -mreserve=data@0x824:0x84F   -Wl,,--defsym=__MPLAB_BUILD=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml$(MP_EXTRA_LD_POST) 
+	
+else
+dist/${CND_CONF}/${IMAGE_TYPE}/LaserCAN.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -o dist/${CND_CONF}/${IMAGE_TYPE}/LaserCAN.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}      -mcpu=$(MP_PROCESSOR_OPTION)        -omf=elf -legacy-libc  -Wl,,--defsym=__MPLAB_BUILD=1,$(MP_LINKER_FILE_OPTION),--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--report-mem,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml$(MP_EXTRA_LD_POST) 
+	${MP_CC_DIR}\\xc16-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/LaserCAN.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} -a  -omf=elf  
+	
+endif
+
+
+# Subprojects
+.build-subprojects:
+
+
+# Subprojects
+.clean-subprojects:
+
+# Clean Targets
+.clean-conf: ${CLEAN_SUBPROJECTS}
+	${RM} -r build/default
+	${RM} -r dist/default
+
+# Enable dependency checking
+.dep.inc: .depcheck-impl
+
+DEPFILES=$(shell mplabwildcard ${POSSIBLE_DEPFILES})
+ifneq (${DEPFILES},)
+include ${DEPFILES}
+endif
