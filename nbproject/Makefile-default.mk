@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=Source/Driver/DeviceIO.c Source/Driver/EEPROMOperate.c Source/Driver/Timer.c Source/Driver/Usart.c Source/Driver/traps.c Source/SerialPort/Action.c Source/SerialPort/CRC16.c Source/SerialPort/RtuFrame.c Source/main.c Source/Driver/CAN.c Source/CANTransmission/Buffer.c
+SOURCEFILES_QUOTED_IF_SPACED=Source/CANTransmission/Buffer.c Source/Driver/DeviceIO.c Source/Driver/EEPROMOperate.c Source/Driver/Timer.c Source/Driver/Usart.c Source/Driver/traps.c Source/Driver/CAN.c Source/SerialPort/Action.c Source/SerialPort/CRC16.c Source/SerialPort/RtuFrame.c Source/main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Source/Driver/DeviceIO.o ${OBJECTDIR}/Source/Driver/EEPROMOperate.o ${OBJECTDIR}/Source/Driver/Timer.o ${OBJECTDIR}/Source/Driver/Usart.o ${OBJECTDIR}/Source/Driver/traps.o ${OBJECTDIR}/Source/SerialPort/Action.o ${OBJECTDIR}/Source/SerialPort/CRC16.o ${OBJECTDIR}/Source/SerialPort/RtuFrame.o ${OBJECTDIR}/Source/main.o ${OBJECTDIR}/Source/Driver/CAN.o ${OBJECTDIR}/Source/CANTransmission/Buffer.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/Source/Driver/DeviceIO.o.d ${OBJECTDIR}/Source/Driver/EEPROMOperate.o.d ${OBJECTDIR}/Source/Driver/Timer.o.d ${OBJECTDIR}/Source/Driver/Usart.o.d ${OBJECTDIR}/Source/Driver/traps.o.d ${OBJECTDIR}/Source/SerialPort/Action.o.d ${OBJECTDIR}/Source/SerialPort/CRC16.o.d ${OBJECTDIR}/Source/SerialPort/RtuFrame.o.d ${OBJECTDIR}/Source/main.o.d ${OBJECTDIR}/Source/Driver/CAN.o.d ${OBJECTDIR}/Source/CANTransmission/Buffer.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/Source/CANTransmission/Buffer.o ${OBJECTDIR}/Source/Driver/DeviceIO.o ${OBJECTDIR}/Source/Driver/EEPROMOperate.o ${OBJECTDIR}/Source/Driver/Timer.o ${OBJECTDIR}/Source/Driver/Usart.o ${OBJECTDIR}/Source/Driver/traps.o ${OBJECTDIR}/Source/Driver/CAN.o ${OBJECTDIR}/Source/SerialPort/Action.o ${OBJECTDIR}/Source/SerialPort/CRC16.o ${OBJECTDIR}/Source/SerialPort/RtuFrame.o ${OBJECTDIR}/Source/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/Source/CANTransmission/Buffer.o.d ${OBJECTDIR}/Source/Driver/DeviceIO.o.d ${OBJECTDIR}/Source/Driver/EEPROMOperate.o.d ${OBJECTDIR}/Source/Driver/Timer.o.d ${OBJECTDIR}/Source/Driver/Usart.o.d ${OBJECTDIR}/Source/Driver/traps.o.d ${OBJECTDIR}/Source/Driver/CAN.o.d ${OBJECTDIR}/Source/SerialPort/Action.o.d ${OBJECTDIR}/Source/SerialPort/CRC16.o.d ${OBJECTDIR}/Source/SerialPort/RtuFrame.o.d ${OBJECTDIR}/Source/main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/Source/Driver/DeviceIO.o ${OBJECTDIR}/Source/Driver/EEPROMOperate.o ${OBJECTDIR}/Source/Driver/Timer.o ${OBJECTDIR}/Source/Driver/Usart.o ${OBJECTDIR}/Source/Driver/traps.o ${OBJECTDIR}/Source/SerialPort/Action.o ${OBJECTDIR}/Source/SerialPort/CRC16.o ${OBJECTDIR}/Source/SerialPort/RtuFrame.o ${OBJECTDIR}/Source/main.o ${OBJECTDIR}/Source/Driver/CAN.o ${OBJECTDIR}/Source/CANTransmission/Buffer.o
+OBJECTFILES=${OBJECTDIR}/Source/CANTransmission/Buffer.o ${OBJECTDIR}/Source/Driver/DeviceIO.o ${OBJECTDIR}/Source/Driver/EEPROMOperate.o ${OBJECTDIR}/Source/Driver/Timer.o ${OBJECTDIR}/Source/Driver/Usart.o ${OBJECTDIR}/Source/Driver/traps.o ${OBJECTDIR}/Source/Driver/CAN.o ${OBJECTDIR}/Source/SerialPort/Action.o ${OBJECTDIR}/Source/SerialPort/CRC16.o ${OBJECTDIR}/Source/SerialPort/RtuFrame.o ${OBJECTDIR}/Source/main.o
 
 # Source Files
-SOURCEFILES=Source/Driver/DeviceIO.c Source/Driver/EEPROMOperate.c Source/Driver/Timer.c Source/Driver/Usart.c Source/Driver/traps.c Source/SerialPort/Action.c Source/SerialPort/CRC16.c Source/SerialPort/RtuFrame.c Source/main.c Source/Driver/CAN.c Source/CANTransmission/Buffer.c
+SOURCEFILES=Source/CANTransmission/Buffer.c Source/Driver/DeviceIO.c Source/Driver/EEPROMOperate.c Source/Driver/Timer.c Source/Driver/Usart.c Source/Driver/traps.c Source/Driver/CAN.c Source/SerialPort/Action.c Source/SerialPort/CRC16.c Source/SerialPort/RtuFrame.c Source/main.c
 
 
 CFLAGS=
@@ -82,6 +82,13 @@ MP_LINKER_FILE_OPTION=,--script=p30F4011.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/Source/CANTransmission/Buffer.o: Source/CANTransmission/Buffer.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/CANTransmission" 
+	@${RM} ${OBJECTDIR}/Source/CANTransmission/Buffer.o.d 
+	@${RM} ${OBJECTDIR}/Source/CANTransmission/Buffer.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/CANTransmission/Buffer.c  -o ${OBJECTDIR}/Source/CANTransmission/Buffer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/Source/Driver/DeviceIO.o: Source/Driver/DeviceIO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
 	@${RM} ${OBJECTDIR}/Source/Driver/DeviceIO.o.d 
@@ -117,6 +124,13 @@ ${OBJECTDIR}/Source/Driver/traps.o: Source/Driver/traps.c  nbproject/Makefile-${
 	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/traps.c  -o ${OBJECTDIR}/Source/Driver/traps.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/traps.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
 	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/traps.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/Source/Driver/CAN.o: Source/Driver/CAN.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/CAN.c  -o ${OBJECTDIR}/Source/Driver/CAN.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/CAN.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/CAN.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/Source/SerialPort/Action.o: Source/SerialPort/Action.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/Source/SerialPort" 
 	@${RM} ${OBJECTDIR}/Source/SerialPort/Action.o.d 
@@ -145,21 +159,14 @@ ${OBJECTDIR}/Source/main.o: Source/main.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/main.c  -o ${OBJECTDIR}/Source/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
 	@${FIXDEPS} "${OBJECTDIR}/Source/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/Source/Driver/CAN.o: Source/Driver/CAN.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
-	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o.d 
-	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/CAN.c  -o ${OBJECTDIR}/Source/Driver/CAN.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/CAN.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
-	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/CAN.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
+else
 ${OBJECTDIR}/Source/CANTransmission/Buffer.o: Source/CANTransmission/Buffer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/Source/CANTransmission" 
 	@${RM} ${OBJECTDIR}/Source/CANTransmission/Buffer.o.d 
 	@${RM} ${OBJECTDIR}/Source/CANTransmission/Buffer.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/CANTransmission/Buffer.c  -o ${OBJECTDIR}/Source/CANTransmission/Buffer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/CANTransmission/Buffer.c  -o ${OBJECTDIR}/Source/CANTransmission/Buffer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
 	@${FIXDEPS} "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-else
 ${OBJECTDIR}/Source/Driver/DeviceIO.o: Source/Driver/DeviceIO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
 	@${RM} ${OBJECTDIR}/Source/Driver/DeviceIO.o.d 
@@ -195,6 +202,13 @@ ${OBJECTDIR}/Source/Driver/traps.o: Source/Driver/traps.c  nbproject/Makefile-${
 	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/traps.c  -o ${OBJECTDIR}/Source/Driver/traps.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/traps.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
 	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/traps.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/Source/Driver/CAN.o: Source/Driver/CAN.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
+	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o.d 
+	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/CAN.c  -o ${OBJECTDIR}/Source/Driver/CAN.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/CAN.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
+	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/CAN.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 ${OBJECTDIR}/Source/SerialPort/Action.o: Source/SerialPort/Action.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/Source/SerialPort" 
 	@${RM} ${OBJECTDIR}/Source/SerialPort/Action.o.d 
@@ -222,20 +236,6 @@ ${OBJECTDIR}/Source/main.o: Source/main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/Source/main.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/main.c  -o ${OBJECTDIR}/Source/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/main.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
 	@${FIXDEPS} "${OBJECTDIR}/Source/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/Source/Driver/CAN.o: Source/Driver/CAN.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/Source/Driver" 
-	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o.d 
-	@${RM} ${OBJECTDIR}/Source/Driver/CAN.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/Driver/CAN.c  -o ${OBJECTDIR}/Source/Driver/CAN.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/Driver/CAN.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
-	@${FIXDEPS} "${OBJECTDIR}/Source/Driver/CAN.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/Source/CANTransmission/Buffer.o: Source/CANTransmission/Buffer.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/Source/CANTransmission" 
-	@${RM} ${OBJECTDIR}/Source/CANTransmission/Buffer.o.d 
-	@${RM} ${OBJECTDIR}/Source/CANTransmission/Buffer.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Source/CANTransmission/Buffer.c  -o ${OBJECTDIR}/Source/CANTransmission/Buffer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d"        -g -omf=elf -legacy-libc  -O0 -msmart-io=1 -Wall -msfr-warn=off   -std=gnu99
-	@${FIXDEPS} "${OBJECTDIR}/Source/CANTransmission/Buffer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

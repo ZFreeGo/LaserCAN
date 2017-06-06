@@ -31,6 +31,9 @@ extern "C" {
 #define ON_UART1_INT()  {IEC0bits.U1RXIE = 1;	} //应该配对使用
 #define OFF_UART1_INT()  {IEC0bits.U1RXIE = 0;	}    
     
+#define ON_UART2_INT()  {IEC1bits.U2RXIE = 1;	} //应该配对使用
+#define OFF_UART2_INT()  {IEC1bits.U2RXIE = 0;	}    
+
 void UsartInit();
 void UsartSend(unsigned char abyte);
 void Usart2Send(unsigned char abyte);

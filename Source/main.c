@@ -7,7 +7,7 @@
 *摘要:
  * 数据结构：目的地址（1byte 0xA1）--功能码(1byte 0x55)--数据长度(1byte) + (数据包) + 16bit累加和（ 2bytes）
  * 数据包： ID（low byte） + ID （Hight Byte） + 数据(1-8) 
- * 
+ * 实现CAN与串口转发
  * 
 *2017/5/10: 新建光纤CAN转发程序
 *当前版本:1.0
@@ -25,7 +25,7 @@
 #include "Header.h"
 #include <string.h>
 // FOSC
-#pragma config FPR = XT_PLL4            // Primary Oscillator Mode (XT w/PLL 4x)
+#pragma config FPR = XT_PLL16            // Primary Oscillator Mode (XT w/PLL 4x)
 #pragma config FOS = PRI                // Oscillator Source (Internal Fast RC)
 #pragma config FCKSMEN = CSW_FSCM_OFF   // Clock Switching and Monitor (Sw Disabled, Mon Disabled)
 
@@ -93,20 +93,9 @@ int main()
     cn = 0;
     BufferInit();
     InitStandardCAN(0, 0);     
-    
-    //延时3s判断启动
+
   
-//    while(1)
-//    {
-//        UsartSend(0xAA);
-//        UsartSend(0x55);
-//        UsartSend(0xAA);
-//      //  __delay_us(100);
-//        Usart2Send(0xAA);
-//        Usart2Send(0x55);
-//        Usart2Send(0xAA);
-//        __delay_us(100);
-//    }
+
     Point.pData = SendPacket;
     while(1)
     {
@@ -114,6 +103,7 @@ int main()
         ClrWdt();
         if (recvFrame.completeFlag == TRUE)
         {
+            LEDB = 1 - LEDB;
             //将数据帧发送出去
             uint16_t id = recvFrame.pData[3] |(((uint16_t)recvFrame.pData[4])<<8);            
             CANSendData(id, recvFrame.pData + 5, recvFrame.datalen - 2);
@@ -123,6 +113,7 @@ int main()
         result = BufferDequeue(&ReciveMsg);
         if (result)
         {
+            LEDC = 1 - LEDC;
             memcpy(SendData + 2, ReciveMsg.data, ReciveMsg.len);
             SendData[0] = ReciveMsg.id;
             SendData[1] = ReciveMsg.id >> 8;
@@ -132,6 +123,13 @@ int main()
             
             Usart2SendData(&Point);
         }
+        if (cn++ > 10000)
+        {
+             LEDA = 1 - LEDA;
+             cn = 0;
+        }
+       
+        
     }
     
   

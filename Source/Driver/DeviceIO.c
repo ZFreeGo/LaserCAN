@@ -22,6 +22,10 @@ void InitDeviceIO(void)
     ADPCFG = 0xFFFF; //模拟端口全部作为数字端口
     ClrWdt();
     
+    TRISBbits.TRISB0 = 0;
+    TRISBbits.TRISB1 = 0;
+    TRISBbits.TRISB2 = 0;
+    
    
 }
 /**

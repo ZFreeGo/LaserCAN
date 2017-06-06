@@ -83,17 +83,17 @@ boolean FrameQueneIn(uint8_t recivData)
 boolean FrameQueneOut(uint8_t* pData)
 {
     //队列是否为空
-    OFF_UART1_INT();//防止接收读取冲突 应配对使用
+    OFF_UART2_INT();//防止接收读取冲突 应配对使用
     if (g_ReciveBufferLen > 0)
     {
         g_ReciveBufferLen--;
         *pData = g_ReciveBuffer[FifoHead]; //首先出队
         FifoHead =( FifoHead + 1)% FRAME_QUENE_LEN;
 
-        ON_UART1_INT();;//防止接收读取冲突 应配对使用
+        ON_UART2_INT();;//防止接收读取冲突 应配对使用
         return TRUE;
     }
-    ON_UART1_INT();;//防止接收读取冲突 应配对使用
+    ON_UART2_INT();;//防止接收读取冲突 应配对使用
     return FALSE;
 }
 
@@ -166,7 +166,7 @@ uint8_t ReciveBufferDataSimpleDealing(frameRtu* pJudgeFrame, frameRtu* pReciveFr
                 ClrWdt();
                 uint8_t data = 0;
                 FrameQueneOut(&data);
-                if ( (data <= 8) && (data > 0))
+                if ( (data <= 10) && (data > 0))//2 + 8 =10
                 {                
                     pReciveFrame->datalen = data;
                     DealStep = 3;

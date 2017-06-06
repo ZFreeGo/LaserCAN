@@ -27,7 +27,7 @@ void InitUART1(unsigned int baud)
     U1MODEbits.ALTIO = 1;//使用辅助位
 
     value = (float)FCY /(float)(16*baud) - 1; //波特率 = FCY/(16 * (BRG + 1))
-    U1BRG = 25;	//25-9600
+    U1BRG = 17;	//25-9600 //12
     
     U1STAbits.UTXBRK = 0;	//Bit11 Disabled
     U1STAbits.UTXEN = 0;	//Bit10 TX pins controlled by periph
@@ -70,7 +70,7 @@ void UsartInit(void)
     
     
     InitPortsUART2();
-    InitUART2(9600);
+    InitUART2(1);
 }
 void UsartSend(unsigned char abyte)
 {
@@ -118,7 +118,7 @@ void InitUART2(unsigned int baud)
 
     // configure U2MODE
     U2MODEbits.UARTEN = 0;	// Bit15 TX, RX DISABLED, ENABLE at end of func
-    
+    Nop();
     U2MODEbits.USIDL = 0;	// Bit13 Continue in Idle
     U2MODEbits.WAKE = 0;	// Bit7 No Wake up (since we don't sleep here)
     U2MODEbits.LPBACK = 0;	// Bit6 No Loop Back
@@ -128,7 +128,7 @@ void InitUART2(unsigned int baud)
 
 
     value = (float)FCY /(float)(16*baud) - 1; //波特率 = FCY/(16 * (BRG + 1))
-    U2BRG = 25;	//25-9600
+    U2BRG = 17;	//4M-25-9600 16M-17-56000 25-38000  8M--12-38000
     
     U2STAbits.UTXBRK = 0;	//Bit11 Disabled
     U2STAbits.UTXEN = 0;	//Bit10 TX pins controlled by periph
@@ -196,7 +196,8 @@ void __attribute__ ((interrupt, no_auto_psv)) _U2RXInterrupt(void)
     
     ClrWdt();
     IFS1bits.U2RXIF = 0;
-    ReciveErrorFlag = FrameQueneIn(U2RXREG);
+   //  Usart2Send(U2RXREG);
+   ReciveErrorFlag = FrameQueneIn(U2RXREG);
     
 }
 void __attribute__ ((interrupt, no_auto_psv)) _U2TXInterrupt(void)

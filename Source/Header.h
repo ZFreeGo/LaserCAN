@@ -1,7 +1,7 @@
 #ifndef _Header_H_
 #define _Header_H_
 
-#define FCY 4e6
+#define FCY 16000000
 #include <libpic30.h>
 
 #include "Driver/tydef.h"
