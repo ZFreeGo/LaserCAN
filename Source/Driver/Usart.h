@@ -35,7 +35,11 @@ extern "C" {
 #define OFF_UART2_INT()  {IEC1bits.U2RXIE = 0;	}    
 
 void UsartInit();
+
 void UsartSend(unsigned char abyte);
+void UsartSendData(PointUint8* pPoint);
+void Usart1Send(unsigned char abyte);
+void Usart1SendData(PointUint8* pPoint);
 void Usart2Send(unsigned char abyte);
 void Usart2SendData(PointUint8* pPoint);
 #ifdef	__cplusplus

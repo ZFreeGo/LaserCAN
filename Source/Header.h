@@ -23,7 +23,11 @@
 #define FUN_CODE  0x55
 #define UP_CODE 0xAA
 
+#define  UART1_MODE 0xAA
+#define  UART2_MODE 0x55
+#define  U485_MODE 0xA5
 
+#define WORK_MODE  UART1_MODE
 
 #define Reset() {__asm__ volatile ("RESET");}
 #endif

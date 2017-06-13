@@ -139,7 +139,7 @@ int main()
             ClrWdt();
             GenRTUFrameCumulativeSum(MAIN_ADDRESS,  UP_CODE,   SendData, ReciveMsg.len + 2,  Point.pData  ,  &Point.len);          
              ClrWdt();            
-            Usart2SendData(&Point);
+            UsartSendData(&Point);
         }
          ClrWdt();
         if (cn++ > 10000)

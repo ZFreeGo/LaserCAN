@@ -27,7 +27,7 @@ void InitUART1(unsigned int baud)
     U1MODEbits.ALTIO = 1;//使用辅助位
 
     value = (float)FCY /(float)(16*baud) - 1; //波特率 = FCY/(16 * (BRG + 1))
-    U1BRG = 17;	//25-9600 //12
+    U1BRG = 17;	//4M-25-9600 16M-17-56000 25-38000  8M--12-38000
     
     U1STAbits.UTXBRK = 0;	//Bit11 Disabled
     U1STAbits.UTXEN = 0;	//Bit10 TX pins controlled by periph
@@ -65,40 +65,20 @@ void InitPortsUART1()
 
 void UsartInit(void)
 {
+#if (WORK_MODE == UART1_MODE)
     InitPortsUART1();
     InitUART1(9600);
-    
+#else
     
     InitPortsUART2();
     InitUART2(1);
+#endif
 }
-void UsartSend(unsigned char abyte)
-{
-    RX_TX_MODE = TX_MODE;   //--鉴于光耦响应时间，须有一定的延时
-    U1TXREG = abyte;
-    while(!U1STAbits.TRMT)
-    {
-        ClrWdt(); //2ms超时后,看门狗复位
-    }
-    
-    RX_TX_MODE = RX_MODE;
-}
+
 void UsartRecive(unsigned char abyte)
 {
 }
 
-void __attribute__ ((interrupt, no_auto_psv)) _U1RXInterrupt(void)
-{
-    
-    ClrWdt();
-    IFS0bits.U1RXIF = 0;
-    ReciveErrorFlag = FrameQueneIn(U1RXREG);
-    
-}
-void __attribute__ ((interrupt, no_auto_psv)) _U1TXInterrupt(void)
-{
-	IFS0bits.U1TXIF = 0;
-}
 
 
 
@@ -198,6 +178,64 @@ inline void Usart2SendData(PointUint8* pPoint)
     
    
 }
+
+
+inline void Usart1Send(unsigned char abyte)
+{
+    U1TXREG = abyte;
+    while(!U1STAbits.TRMT)
+    {
+        ClrWdt(); //2ms超时后,看门狗复位
+    }
+}
+inline void Usart1SendData(PointUint8* pPoint)
+{
+    uint8_t i = 0; 
+    for ( i =0; i < pPoint->len; i++)
+    {
+         ClrWdt();
+         U1TXREG = pPoint->pData[i];
+        while(!U1STAbits.TRMT)
+        {          
+        }
+    }
+}
+
+void UsartSend(unsigned char abyte)
+{
+#if (WORK_MODE == UART1_MODE)
+     Usart1Send(abyte);
+#else
+    
+     Usart2Send(abyte);
+#endif
+}
+
+void UsartSendData(PointUint8* pPoint)
+{
+#if (WORK_MODE == UART1_MODE)
+     Usart1SendData( pPoint);
+#else
+    
+     Usart2SendData(pPoint);
+#endif
+}
+
+
+void __attribute__ ((interrupt, no_auto_psv)) _U1RXInterrupt(void)
+{
+    
+    ClrWdt();
+    IFS0bits.U1RXIF = 0;
+    ReciveErrorFlag = FrameQueneIn(U1RXREG);
+    
+}
+void __attribute__ ((interrupt, no_auto_psv)) _U1TXInterrupt(void)
+{
+	IFS0bits.U1TXIF = 0;
+}
+
+
 void __attribute__ ((interrupt, no_auto_psv)) _U2RXInterrupt(void)
 {
     
