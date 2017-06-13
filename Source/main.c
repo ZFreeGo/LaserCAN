@@ -30,9 +30,9 @@
 #pragma config FCKSMEN = CSW_FSCM_OFF   // Clock Switching and Monitor (Sw Disabled, Mon Disabled)
 
 // FWDT
-#pragma config FWPSB = WDTPSB_16        // WDT Prescaler B (1:16)
-#pragma config FWPSA = WDTPSA_512       // WDT Prescaler A (1:512)
-#pragma config WDT = WDT_OFF            // Watchdog Timer (Disabled)
+#pragma config FWPSB = WDTPSB_1         // WDT Prescaler B (1:1)
+#pragma config FWPSA = WDTPSA_8         // WDT Prescaler A (1:8)
+#pragma config WDT = WDT_ON             // Watchdog Timer (Enabled)
 
 // FBORPOR
 #pragma config FPWRT = PWRT_64          // POR Timer Value (64ms)
@@ -61,7 +61,21 @@ uint8_t SendPacket[20];
 int main()
 {
     uint8_t result = 0;
-    __delay_ms(100);
+      ClrWdt();
+    __delay_ms(10);
+      ClrWdt();
+      __delay_ms(10);
+      ClrWdt();
+      __delay_ms(10);
+      ClrWdt();
+      __delay_ms(10);
+      ClrWdt();
+      __delay_ms(10);
+      ClrWdt();
+      __delay_ms(10);
+      ClrWdt();
+      __delay_ms(10);
+      ClrWdt();
     uint16_t cn = 0;
     
     InitDeviceIO(); //IO初始化 首先禁止中断  
@@ -77,7 +91,9 @@ int main()
     __delay_us(20);
     
     UsartSend(0xAA);
+     ClrWdt();
     UsartSend(0x55);
+     ClrWdt();
     UsartSend(0xAA);
 
     RX_TX_MODE = RX_MODE;
@@ -105,24 +121,27 @@ int main()
         {
             LEDB = 1 - LEDB;
             //将数据帧发送出去
-            uint16_t id = recvFrame.pData[3] |(((uint16_t)recvFrame.pData[4])<<8);            
+            uint16_t id = recvFrame.pData[3] |(((uint16_t)recvFrame.pData[4])<<8);   
+             ClrWdt();
             CANSendData(id, recvFrame.pData + 5, recvFrame.datalen - 2);
             recvFrame.completeFlag = FALSE;
         }
-        
+         ClrWdt();
         result = BufferDequeue(&ReciveMsg);
+         ClrWdt();
         if (result)
         {
+             ClrWdt();
             LEDC = 1 - LEDC;
             memcpy(SendData + 2, ReciveMsg.data, ReciveMsg.len);
             SendData[0] = ReciveMsg.id;
             SendData[1] = ReciveMsg.id >> 8;
-           
+            ClrWdt();
             GenRTUFrameCumulativeSum(MAIN_ADDRESS,  UP_CODE,   SendData, ReciveMsg.len + 2,  Point.pData  ,  &Point.len);          
-            
-            
+             ClrWdt();            
             Usart2SendData(&Point);
         }
+         ClrWdt();
         if (cn++ > 10000)
         {
              LEDA = 1 - LEDA;

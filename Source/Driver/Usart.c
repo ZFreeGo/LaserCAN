@@ -167,29 +167,36 @@ void InitPortsUART2(void)
 
 inline void Usart2Send(unsigned char abyte)
 {
-   // RX_TX_MODE = TX_MODE;   //--鉴于光耦响应时间，须有一定的延时
+    RX_TX_MODE = TX_MODE;   //--鉴于光耦响应时间，须有一定的延时
+     __delay_us(10);
     U2TXREG = abyte;
     while(!U2STAbits.TRMT)
     {
         ClrWdt(); //2ms超时后,看门狗复位
     }
-    
-   // RX_TX_MODE = RX_MODE;
+    __delay_us(10);
+    RX_TX_MODE = RX_MODE;
 }
 inline void Usart2SendData(PointUint8* pPoint)
 {
     uint8_t i = 0;
+     RX_TX_MODE = TX_MODE; 
+     __delay_us(100);
+      ClrWdt();
     for ( i =0; i < pPoint->len; i++)
     {
+         ClrWdt();
          U2TXREG = pPoint->pData[i];
         while(!U2STAbits.TRMT)
         {
             ClrWdt(); //2ms超时后,看门狗复位
         }
     }
+     __delay_us(100);
+     RX_TX_MODE = RX_MODE;
   
     
-   // RX_TX_MODE = RX_MODE;
+   
 }
 void __attribute__ ((interrupt, no_auto_psv)) _U2RXInterrupt(void)
 {

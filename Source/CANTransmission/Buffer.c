@@ -5,7 +5,7 @@
 #define FALSE 0
 
 #define BUFFER_LEN  48
-
+#include <xc.h>
 
 /**
  *缓冲空间，暂定为32个 
@@ -70,7 +70,7 @@ uint8_t BufferEnqueue( CAN_msg* pMsg)
 uint8_t BufferDequeue( CAN_msg* pMsg)
 {
     FifoInformation* pInf = &FifoInfor;
-
+     ClrWdt();
     if (pInf->count > 0)
     {        
         memcpy( pMsg, pInf->pMsg + pInf->head , sizeof(CAN_msg));

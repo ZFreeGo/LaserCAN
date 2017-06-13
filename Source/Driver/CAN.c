@@ -371,7 +371,7 @@ uint8_t ConfigDataTXB2(uint8_t len, CANFrame* pframe)
          C1TX0DLCbits.DLC = len;
          C1TX0DLCbits.TXRTR = 0;//正常报文       
          C1TX0CONbits.TXPRI = 3;
-         
+          ClrWdt();
          //可考虑使用地址，简化操作
          switch(len) 
          {
@@ -429,7 +429,7 @@ uint8_t ConfigDataTXB2(uint8_t len, CANFrame* pframe)
              }    
          }
               
-          
+           ClrWdt();
          
         
         
