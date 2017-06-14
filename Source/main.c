@@ -36,7 +36,7 @@
 
 // FBORPOR
 #pragma config FPWRT = PWRT_64          // POR Timer Value (64ms)
-#pragma config BODENV = BORV20          // Brown Out Voltage (Reserved)
+#pragma config BODENV = BORV42          // Brown Out Voltage (4.2V)
 #pragma config BOREN = PBOR_ON          // PBOR Enable (Enabled)
 #pragma config LPOL = PWMxL_ACT_HI      // Low-side PWM Output Polarity (Active High)
 #pragma config HPOL = PWMxH_ACT_HI      // High-side PWM Output Polarity (Active High)
@@ -58,6 +58,9 @@ CAN_msg ReciveMsg;
 uint8_t SendData[12];
 uint8_t SendPacket[20];
  PointUint8 Point;
+ 
+ void SendCANState(void);
+ 
 int main()
 {
     uint8_t result = 0;
@@ -77,6 +80,7 @@ int main()
       __delay_ms(10);
       ClrWdt();
     uint16_t cn = 0;
+    uint32_t sendCn = 0;
     
     InitDeviceIO(); //IO初始化 首先禁止中断  
     ClrWdt();
@@ -122,6 +126,12 @@ int main()
             LEDB = 1 - LEDB;
             //将数据帧发送出去
             uint16_t id = recvFrame.pData[3] |(((uint16_t)recvFrame.pData[4])<<8);   
+            //是否为本机CAN MAC ID,若为本机则直接上传
+            if (LOCAL_MAC_ID == id)
+            {
+              SendCANState();
+            }           
+            
              ClrWdt();
             CANSendData(id, recvFrame.pData + 5, recvFrame.datalen - 2);
             recvFrame.completeFlag = FALSE;
@@ -147,11 +157,34 @@ int main()
              LEDA = 1 - LEDA;
              cn = 0;
         }
-       
+         //每隔一段时间重新发送状态信息3-4s发送一次
+        if ( sendCn++ > 600000)
+        {
+            SendCANState();
+            sendCn = 0;
+        }
         
     }
     
   
 }
 
-  
+ /**
+  * 发送CAN状态
+  */
+ void SendCANState(void)
+ {
+    SendData[0] = LOCAL_MAC_ID;
+    SendData[1] = 0;
+    SendData[2] = 0x11 | 0x80;
+    SendData[3] = 0xAA;
+    SendData[4] = (uint8_t)(C1INTF); //错误标志   
+    SendData[5] = (uint8_t)(C1INTF >> 8); //错误标注
+    SendData[6] = (uint8_t)(C1EC); //接收错误计数               
+    SendData[7] = (uint8_t)(C1EC >> 8); //发送错误计数               
+    SendData[8] = 0;
+    SendData[9] = 0;
+    ClrWdt();
+    GenRTUFrameCumulativeSum(MAIN_ADDRESS,  UP_CODE,   SendData, 10,  Point.pData  ,  &Point.len); 
+    UsartSendData(&Point);
+ }

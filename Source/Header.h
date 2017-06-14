@@ -20,6 +20,9 @@
 #define LOCAL_ADDRESS 0xA1
 #define MAIN_ADDRESS 0x1A
 
+#define LOCAL_MAC_ID 0xF1
+
+
 #define FUN_CODE  0x55
 #define UP_CODE 0xAA
 

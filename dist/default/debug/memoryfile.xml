@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/production/LaserCAN.X.production.elf">
+  <executable name="dist/default/debug/LaserCAN.X.debug.elf">
     <memory name="data">
       <units>bytes</units>
       <length>2048</length>
-      <used>1022</used>
-      <free>1026</free>
+      <used>1102</used>
+      <free>946</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
       <length>48768</length>
-      <used>11136</used>
-      <free>37632</free>
+      <used>11073</used>
+      <free>37695</free>
     </memory>
   </executable>
 </project>
