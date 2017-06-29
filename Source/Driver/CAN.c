@@ -480,7 +480,7 @@ uint8_t ConfigDataTXB2(uint8_t len, CANFrame* pframe)
 // }
  uint8_t ReadRx0Frame(PointUint8* pPoint)
  {
-     uint8_t len = 0, i = 0, j = 0;
+     uint8_t len = 0;
      if (pPoint->len >= 8)
      {
          if ((C1RX0CONbits.RXFUL == 1) && (C1RX0CONbits.RXRTRRO == 0) ) //包含一个有效报文 且不是远程帧
@@ -528,6 +528,8 @@ uint8_t ConfigDataTXB2(uint8_t len, CANFrame* pframe)
  
 void __attribute__((interrupt, no_auto_psv)) _C1Interrupt(void)
 {
+     uint8_t rxErrorCount = C1EC & 0x00FF;
+    uint8_t txErrorCount = (C1EC & 0xFF00) >> 8;
     
     IFS1bits.C1IF = 0;         //Clear interrupt flag
     
@@ -560,14 +562,26 @@ void __attribute__((interrupt, no_auto_psv)) _C1Interrupt(void)
       {           
           C1INTFbits.RX1IF = 0;  	//If the Interrupt is due to Receive1 of CAN1 Clear the Interrupt   
      }    
-    
+     if((rxErrorCount < 120) || (txErrorCount < 120))
+    {
+        C1INTEbits.ERRIE = 1;   //开启错误中断
+        IEC1bits.C1IE = 1;      //允许CAN中断
+    }
+      /*总线关闭错误中断处理*/
+    if((C1INTFbits.TXBO) && (C1INTFbits.ERRIF))
+    {
+        //总线关断，需要报错，但是此时可以退出中断服务程序，但是不会改变TXBO位
+        //可以选择不退出中断函数，或者报警，进行人为的总线关断恢复
+        C1INTFbits.ERRIF = 0;   //退出中断服务
+        C1INTEbits.ERRIE = 0;   //禁止错误中断，以允许其他程序的正常运行
+        IEC1bits.C1IE = 0;  //不在允许CAN中断
+    }
     if(C1INTFbits.ERRIF)
     {
         C1INTFbits.ERRIF = 0;
         g_CANStatus  = 0xA1;
       //  while(1);
-    }
-    
+    }    
     
     if (C1INTFbits.IRXIF)
     {

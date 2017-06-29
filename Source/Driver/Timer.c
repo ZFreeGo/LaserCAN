@@ -1,4 +1,4 @@
-#define FCY 4e6 
+#include "..\Header.h"
 #include "Timer.h"
 #include <xc.h>
 #include "tydef.h"

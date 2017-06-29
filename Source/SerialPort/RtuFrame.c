@@ -16,7 +16,7 @@
 //入队错误标志位 TRUE未满 正常入队 FALSE 无法入队
 boolean volatile ReciveErrorFlag = TRUE; 
 
-#define FRAME_QUENE_LEN 64 
+#define FRAME_QUENE_LEN 256
 uint8_t  volatile g_ReciveBufferLen = 0; //未处理接收数据长度
 uint8_t  volatile  g_ReciveBuffer[FRAME_QUENE_LEN] = {0}; //临时存放串口接收数据
 uint8_t  FifoHead = 0;
@@ -83,17 +83,29 @@ boolean FrameQueneIn(uint8_t recivData)
 boolean FrameQueneOut(uint8_t* pData)
 {
     //队列是否为空
-    OFF_UART2_INT();//防止接收读取冲突 应配对使用
+    #if (WORK_MODE == UART1_MODE)
+        OFF_UART1_INT();
+    #else
+        OFF_UART2_INT();//防止接收读取冲突 应配对使用
+    #endif
     if (g_ReciveBufferLen > 0)
     {
         g_ReciveBufferLen--;
         *pData = g_ReciveBuffer[FifoHead]; //首先出队
         FifoHead =( FifoHead + 1)% FRAME_QUENE_LEN;
 
-        ON_UART2_INT();;//防止接收读取冲突 应配对使用
+        #if (WORK_MODE == UART1_MODE)
+        ON_UART1_INT();
+        #else
+            ON_UART2_INT();//防止接收读取冲突 应配对使用
+        #endif
         return TRUE;
     }
-    ON_UART2_INT();;//防止接收读取冲突 应配对使用
+     #if (WORK_MODE == UART1_MODE)
+        ON_UART1_INT();
+    #else
+        ON_UART2_INT();//防止接收读取冲突 应配对使用
+    #endif
     return FALSE;
 }
 
