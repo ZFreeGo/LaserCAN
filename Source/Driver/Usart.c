@@ -27,7 +27,7 @@ void InitUART1(unsigned int baud)
     U1MODEbits.ALTIO = 1;//使用辅助位
 
     value = (float)FCY /(float)(16*baud) - 1; //波特率 = FCY/(16 * (BRG + 1))
-    U1BRG = 25;	//4M-25-9600 16M-17-56000 25-38400  8M--12-38000
+    U1BRG = 103;	//4M-25-9600 16M-17-56000 25-38400 9600-103  8M--12-38000
     
     U1STAbits.UTXBRK = 0;	//Bit11 Disabled
     U1STAbits.UTXEN = 0;	//Bit10 TX pins controlled by periph
@@ -107,7 +107,7 @@ void InitUART2(unsigned int baud)
 
 
     value = (float)FCY /(float)(16*baud) - 1; //波特率 = FCY/(16 * (BRG + 1))
-    U2BRG = 17;	//4M-25-9600 16M-17-56000 25-38000  8M--12-38000
+    U2BRG = 9600;	//4M-25-9600 16M-17-56000 25-38000 103-9600  8M--12-38000
     
     U2STAbits.UTXBRK = 0;	//Bit11 Disabled
     U2STAbits.UTXEN = 0;	//Bit10 TX pins controlled by periph
