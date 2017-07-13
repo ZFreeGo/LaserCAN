@@ -527,9 +527,7 @@ uint8_t ConfigDataTXB2(uint8_t len, CANFrame* pframe)
  EIDBits rEID;
  
 void __attribute__((interrupt, no_auto_psv)) _C1Interrupt(void)
-{
-     uint8_t rxErrorCount = C1EC & 0x00FF;
-    uint8_t txErrorCount = (C1EC & 0xFF00) >> 8;
+{    
     
     IFS1bits.C1IF = 0;         //Clear interrupt flag
     
@@ -562,11 +560,7 @@ void __attribute__((interrupt, no_auto_psv)) _C1Interrupt(void)
       {           
           C1INTFbits.RX1IF = 0;  	//If the Interrupt is due to Receive1 of CAN1 Clear the Interrupt   
      }    
-     if((rxErrorCount < 120) || (txErrorCount < 120))
-    {
-        C1INTEbits.ERRIE = 1;   //开启错误中断
-        IEC1bits.C1IE = 1;      //允许CAN中断
-    }
+    
       /*总线关闭错误中断处理*/
     if((C1INTFbits.TXBO) && (C1INTFbits.ERRIF))
     {

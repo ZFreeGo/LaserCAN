@@ -58,9 +58,16 @@ CAN_msg ReciveMsg;
 uint8_t SendData[12];
 uint8_t SendPacket[20];
  PointUint8 Point;
+ /**
+  *最后CAN接收接收计数，进行时间计数若长时间未收到信息认为发生错误。
+  */
+ uint32_t CanOverTimeCount;
+ uint32_t UartOverTimeCount;
  
- void SendCANState(void);
- 
+void SendCANState(void);
+
+
+
 int main()
 {
     uint8_t result = 0;
@@ -110,6 +117,8 @@ int main()
     sendFrame.address =  LOCAL_ADDRESS; //本机接收地址处理
     ClrWdt(); //21cys
     
+    CanOverTimeCount = 0;
+    UartOverTimeCount = 0;
     cn = 0;
     BufferInit();
     InitStandardCAN(0, 0);     
@@ -123,6 +132,7 @@ int main()
         ClrWdt();
         if (recvFrame.completeFlag == TRUE)
         {
+            UartOverTimeCount = 0;
             LEDB = 1 - LEDB;
             //将数据帧发送出去
             uint16_t id = recvFrame.pData[3] |(((uint16_t)recvFrame.pData[4])<<8);   
@@ -141,6 +151,7 @@ int main()
          ClrWdt();
         if (result)
         {
+            CanOverTimeCount = 0;
              ClrWdt();
             LEDC = 1 - LEDC;
             memcpy(SendData + 2, ReciveMsg.data, ReciveMsg.len);
@@ -163,7 +174,17 @@ int main()
             SendCANState();
             sendCn = 0;
         }
-        
+         //CAN长时间未收到信息超时复位 约15s
+         if ( CanOverTimeCount ++ > 3000000)//
+         {
+             Reset();
+         }
+         //UART长时间未收到信息超时复位 约15s
+         if (UartOverTimeCount ++ > 3000000)//
+         {
+             Reset();
+         }
+       
     }
     
   
@@ -187,4 +208,24 @@ int main()
     ClrWdt();
     GenRTUFrameCumulativeSum(MAIN_ADDRESS,  UP_CODE,   SendData, 10,  Point.pData  ,  &Point.len); 
     UsartSendData(&Point);
+    
+    //溢出错误，清空标志位
+    if(C1INTFbits.RX0OVR )
+    {
+        C1INTFbits.RX0OVR = 0;
+        C1RX0CONbits.RXFUL = 0; 
+    }
+    if(C1INTFbits.RX1OVR)
+    {
+        C1INTFbits.RX1OVR = 0;
+        C1RX1CONbits.RXFUL = 0; 
+    }    
+    //检查错误中断数
+    uint8_t rxErrorCount = C1EC & 0x00FF;
+    uint8_t txErrorCount = (C1EC & 0xFF00) >> 8;
+    if((rxErrorCount < 120) || (txErrorCount < 120))
+    {
+        C1INTEbits.ERRIE = 1;   //开启错误中断
+        IEC1bits.C1IE = 1;      //允许CAN中断
+    }
  }
