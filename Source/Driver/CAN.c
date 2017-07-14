@@ -361,6 +361,22 @@ uint8_t ConfigDataTXB2(uint8_t len, CANFrame* pframe)
 **********************************************/
  uint8_t CANSendData(uint16_t id, uint8_t * pbuff, uint8_t len)
  {  
+         
+     //判断是否有正在请求发送的报文
+     if(  C1TX0CONbits.TXREQ )
+     {
+         ClrWdt();
+         __delay_ms(2);
+         ClrWdt();
+         __delay_ms(2);
+         ClrWdt();
+         __delay_ms(2);
+         ClrWdt();
+         if(  C1TX0CONbits.TXREQ )//等待判断
+         {
+             return 0xff;
+         }
+     }
     if ((len <= 8) && (len > 0))
     {
         C1TX0SIDbits.TXIDE = 0;//标准帧
@@ -429,15 +445,11 @@ uint8_t ConfigDataTXB2(uint8_t len, CANFrame* pframe)
              }    
          }
               
-           ClrWdt();
-         
-        
-        
-        
-        
+           ClrWdt();              
         C1TX0CONbits.TXREQ = 1;         //请求发送
+         return 0;
     }
-    return 0;
+    return 0xff;
  }
 // 
 // /***********************************************************
@@ -554,7 +566,7 @@ void __attribute__((interrupt, no_auto_psv)) _C1Interrupt(void)
         CAN_RxRdy = 1;                            /*  set receive flag */
         BufferEnqueue(&CAN_RxMsg);
         //DeviceNetReciveCenter(&id,Rframe.framDataByte, len);
-      
+        g_CANStatus = 0;
       }
       else if(C1INTFbits.RX1IF)
       {           
@@ -566,21 +578,19 @@ void __attribute__((interrupt, no_auto_psv)) _C1Interrupt(void)
     {
         //总线关断，需要报错，但是此时可以退出中断服务程序，但是不会改变TXBO位
         //可以选择不退出中断函数，或者报警，进行人为的总线关断恢复
-        C1INTFbits.ERRIF = 0;   //退出中断服务
-        C1INTEbits.ERRIE = 0;   //禁止错误中断，以允许其他程序的正常运行
-        IEC1bits.C1IE = 0;  //不在允许CAN中断
+        C1INTFbits.ERRIF = 0;  
+        g_CANStatus  = 0xA1;    
     }
     if(C1INTFbits.ERRIF)
     {
         C1INTFbits.ERRIF = 0;
-        g_CANStatus  = 0xA1;
-      //  while(1);
-    }    
+        g_CANStatus  = 0xA2;    
+    }   
     
     if (C1INTFbits.IRXIF)
     {
         C1INTFbits.IRXIF = 0;
-         g_CANStatus  = 0xA2;
+         g_CANStatus  = 0xA3;
     }
     C1INTF = 0;
 }

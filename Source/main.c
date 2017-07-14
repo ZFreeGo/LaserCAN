@@ -143,8 +143,15 @@ int main()
             }           
             
              ClrWdt();
-            CANSendData(id, recvFrame.pData + 5, recvFrame.datalen - 2);
-            recvFrame.completeFlag = FALSE;
+            result = CANSendData(id, recvFrame.pData + 5, recvFrame.datalen - 2);
+            if(result)
+            {
+                 Reset();
+            }
+            else
+            {
+                recvFrame.completeFlag = FALSE;
+            }
         }
          ClrWdt();
         result = BufferDequeue(&ReciveMsg);
@@ -184,7 +191,11 @@ int main()
          {
              Reset();
          }
-       
+         ClrWdt();
+         if (C1INTFbits.TXBO)
+         {
+             InitStandardCAN(0, 0);     
+         }
     }
     
   
@@ -220,12 +231,7 @@ int main()
         C1INTFbits.RX1OVR = 0;
         C1RX1CONbits.RXFUL = 0; 
     }    
-    //检查错误中断数
-    uint8_t rxErrorCount = C1EC & 0x00FF;
-    uint8_t txErrorCount = (C1EC & 0xFF00) >> 8;
-    if((rxErrorCount < 120) || (txErrorCount < 120))
-    {
-        C1INTEbits.ERRIE = 1;   //开启错误中断
-        IEC1bits.C1IE = 1;      //允许CAN中断
-    }
+    
+
+   
  }

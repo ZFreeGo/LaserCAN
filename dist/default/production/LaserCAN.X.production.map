@@ -115,12 +115,12 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x456           0x681  (1665)
 .const                       0x556               0x200           0x300  (768)
-.text                        0x756              0x16fe          0x227d  (8829)
-.dinit                      0x1e54                0x2e            0x45  (69)
-.init.delay32               0x1e82                0x1c            0x2a  (42)
-.shared.dinit               0x1e9e                 0x2             0x3  (3)
+.text                        0x756              0x1732          0x22cb  (8907)
+.dinit                      0x1e88                0x2e            0x45  (69)
+.init.delay32               0x1eb6                0x1c            0x2a  (42)
+.shared.dinit               0x1ed2                 0x2             0x3  (3)
 
-                 Total program memory used (bytes):         0x2c70  (11376) 23%
+                 Total program memory used (bytes):         0x2cbe  (11454) 23%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0x7c]
@@ -152,11 +152,11 @@ Data Memory  [Origin = 0x800, Length = 0x800]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0           0x4c2  (1218)
-_0497F0005967fa92            0xcc2                   0             0x2  (2)
-.ndata                       0xcc4                   0             0x2  (2)
+.nbss                        0x800                   0           0x5a2  (1442)
+_0497F0005967fa92            0xda2                   0             0x2  (2)
+.ndata                       0xda4                   0             0x2  (2)
 
-                 Total data memory used (bytes):          0x4c6  (1222) 59%
+                 Total data memory used (bytes):          0x5a6  (1446) 70%
 
 
 Dynamic Memory Usage
@@ -164,90 +164,90 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0xcc6                               0x33a  (826)
+stack                        0xda6                               0x25a  (602)
 
-                 Maximum dynamic memory (bytes):          0x33a  (826)
+                 Maximum dynamic memory (bytes):          0x25a  (602)
 
 
 External Symbols in Data Memory (by address):
 
                     0x0800                  _CanMsg
-                    0x0aa0                  _FifoInfor
-                    0x0aa6                  _len
-                    0x0aa8                  _g_ReciveBufferLen
-                    0x0aa9                  _g_ReciveBuffer
-                    0x0ba9                  _FifoHead
-                    0x0baa                  _FifoEnd
-                    0x0bab                  _DealStep
-                    0x0bac                  _FrameData
-                    0x0bec                  _RtuFrame
-                    0x0bfc                  _completeFlag
-                    0x0bfd                  _ReciveIndex
-                    0x0bfe                  _SendFrameData
-                    0x0c3e                  _sendFrame
-                    0x0c46                  _recvFrame
-                    0x0c4e                  _ReciveMsg
-                    0x0c5c                  _SendData
-                    0x0c68                  _SendPacket
-                    0x0c7c                  _Point
-                    0x0c80                  _CanOverTimeCount
-                    0x0c84                  _UartOverTimeCount
-                    0x0c88                  _g_CANStatus
-                    0x0c8a                  _CAN_TxMsg
-                    0x0c98                  _CAN_RxMsg
-                    0x0ca6                  _CAN_TxRdy
-                    0x0ca8                  _CAN_RxRdy
-                    0x0caa                  _Rframe
-                    0x0cb2                  _rlen
-                    0x0cb4                  _rEID
-                    0x0cb8                  _TPRCount
-                    0x0cba                  _TPR3Count
-                    0x0cbc                  _TPR4Count
-                    0x0cbe                  _OverTime
-                    0x0cc0                  _OverTimeCn
-                    0x0cc2                  _ReceiveStateFlag
-                    0x0cc4                  _ReciveErrorFlag
-                    0x0cc5                  _LocalAddress
+                    0x0b80                  _FifoInfor
+                    0x0b86                  _len
+                    0x0b88                  _g_ReciveBufferLen
+                    0x0b89                  _g_ReciveBuffer
+                    0x0c89                  _FifoHead
+                    0x0c8a                  _FifoEnd
+                    0x0c8b                  _DealStep
+                    0x0c8c                  _FrameData
+                    0x0ccc                  _RtuFrame
+                    0x0cdc                  _completeFlag
+                    0x0cdd                  _ReciveIndex
+                    0x0cde                  _SendFrameData
+                    0x0d1e                  _sendFrame
+                    0x0d26                  _recvFrame
+                    0x0d2e                  _ReciveMsg
+                    0x0d3c                  _SendData
+                    0x0d48                  _SendPacket
+                    0x0d5c                  _Point
+                    0x0d60                  _CanOverTimeCount
+                    0x0d64                  _UartOverTimeCount
+                    0x0d68                  _g_CANStatus
+                    0x0d6a                  _CAN_TxMsg
+                    0x0d78                  _CAN_RxMsg
+                    0x0d86                  _CAN_TxRdy
+                    0x0d88                  _CAN_RxRdy
+                    0x0d8a                  _Rframe
+                    0x0d92                  _rlen
+                    0x0d94                  _rEID
+                    0x0d98                  _TPRCount
+                    0x0d9a                  _TPR3Count
+                    0x0d9c                  _TPR4Count
+                    0x0d9e                  _OverTime
+                    0x0da0                  _OverTimeCn
+                    0x0da2                  _ReceiveStateFlag
+                    0x0da4                  _ReciveErrorFlag
+                    0x0da5                  _LocalAddress
 
 External Symbols in Data Memory (by name):
 
-                    0x0c98                  _CAN_RxMsg
-                    0x0ca8                  _CAN_RxRdy
-                    0x0c8a                  _CAN_TxMsg
-                    0x0ca6                  _CAN_TxRdy
+                    0x0d78                  _CAN_RxMsg
+                    0x0d88                  _CAN_RxRdy
+                    0x0d6a                  _CAN_TxMsg
+                    0x0d86                  _CAN_TxRdy
                     0x0800                  _CanMsg
-                    0x0c80                  _CanOverTimeCount
-                    0x0bab                  _DealStep
-                    0x0baa                  _FifoEnd
-                    0x0ba9                  _FifoHead
-                    0x0aa0                  _FifoInfor
-                    0x0bac                  _FrameData
-                    0x0cc5                  _LocalAddress
-                    0x0cbe                  _OverTime
-                    0x0cc0                  _OverTimeCn
-                    0x0c7c                  _Point
-                    0x0cc2                  _ReceiveStateFlag
-                    0x0cc4                  _ReciveErrorFlag
-                    0x0bfd                  _ReciveIndex
-                    0x0c4e                  _ReciveMsg
-                    0x0caa                  _Rframe
-                    0x0bec                  _RtuFrame
-                    0x0c5c                  _SendData
-                    0x0bfe                  _SendFrameData
-                    0x0c68                  _SendPacket
-                    0x0cba                  _TPR3Count
-                    0x0cbc                  _TPR4Count
-                    0x0cb8                  _TPRCount
-                    0x0c84                  _UartOverTimeCount
-                    0x0bfc                  _completeFlag
-                    0x0c88                  _g_CANStatus
-                    0x0aa9                  _g_ReciveBuffer
-                    0x0aa8                  _g_ReciveBufferLen
-                    0x0aa6                  _len
-                    0x0cb4                  _rEID
-                    0x0c46                  _recvFrame
-                    0x0cb2                  _rlen
-                    0x0c3e                  _sendFrame
+                    0x0d60                  _CanOverTimeCount
+                    0x0c8b                  _DealStep
+                    0x0c8a                  _FifoEnd
+                    0x0c89                  _FifoHead
+                    0x0b80                  _FifoInfor
+                    0x0c8c                  _FrameData
+                    0x0da5                  _LocalAddress
+                    0x0d9e                  _OverTime
+                    0x0da0                  _OverTimeCn
+                    0x0d5c                  _Point
+                    0x0da2                  _ReceiveStateFlag
+                    0x0da4                  _ReciveErrorFlag
+                    0x0cdd                  _ReciveIndex
+                    0x0d2e                  _ReciveMsg
+                    0x0d8a                  _Rframe
+                    0x0ccc                  _RtuFrame
+                    0x0d3c                  _SendData
+                    0x0cde                  _SendFrameData
+                    0x0d48                  _SendPacket
+                    0x0d9a                  _TPR3Count
+                    0x0d9c                  _TPR4Count
+                    0x0d98                  _TPRCount
+                    0x0d64                  _UartOverTimeCount
+                    0x0cdc                  _completeFlag
+                    0x0d68                  _g_CANStatus
+                    0x0b89                  _g_ReciveBuffer
+                    0x0b88                  _g_ReciveBufferLen
+                    0x0b86                  _len
+                    0x0d94                  _rEID
+                    0x0d26                  _recvFrame
+                    0x0d92                  _rlen
+                    0x0d1e                  _sendFrame
 
 External Symbols in Program Memory (by address):
 
@@ -294,139 +294,139 @@ External Symbols in Program Memory (by address):
                   0x000a54                  _ConfigDataTXB1
                   0x000b16                  _ConfigDataTXB2
                   0x000bd8                  _CANSendData
-                  0x000e04                  _ReadRx0Frame
-                  0x000ea2                  _GetReciveRX0EID
-                  0x000f00                  __C1Interrupt
-                  0x000faa                  _ReciveFrameDataInit
-                  0x000fc4                  _FrameQueneIn
-                  0x000ff4                  _FrameQueneOut
-                  0x001036                  _ReciveBufferDataSimpleDealing
-                  0x0011b2                  _ReciveBufferDataDealing
-                  0x001304                  _GenRTUFrame
-                  0x001394                  _GenRTUFrameCumulativeSum
-                  0x00142a                  _SendFrame
-                  0x001462                  _main
-                  0x00167a                  _SendCANState
-                  0x0016fe                  _InitUART1
-                  0x001762                  _InitPortsUART1
-                  0x001770                  _UsartInit
-                  0x00177c                  _UsartRecive
-                  0x001784                  _InitUART2
-                  0x0017e8                  _InitPortsUART2
-                  0x0017f2                  _Usart2Send
-                  0x00181c                  _Usart2SendData
-                  0x001868                  _Usart1Send
-                  0x001882                  _Usart1SendData
-                  0x0018ba                  _UsartSend
-                  0x0018c6                  _UsartSendData
-                  0x0018d2                  __U1RXInterrupt
-                  0x0018f8                  __U1TXInterrupt
-                  0x001900                  __U2RXInterrupt
-                  0x001926                  __U2TXInterrupt
-                  0x00192e                  _WriteWord_EEPROM
-                  0x0019c0                  _ReadWord_EEPROM
-                  0x0019da                  _ReadEEPROM
-                  0x001a4a                  _WriteEEPROM
-                  0x001ae2                  _Init_Timer1
-                  0x001b28                  _StartTimer1
-                  0x001b32                  _ResetTimer1
-                  0x001b42                  _SetTimer2
-                  0x001b84                  _StartTimer2
-                  0x001b94                  _StopTimer2
-                  0x001b9e                  _SetTimer3
-                  0x001be0                  _StartTimer3
-                  0x001bf0                  _StopTimer3
-                  0x001bfa                  _SetTimer4
-                  0x001c3c                  _StartTimer4
-                  0x001c4e                  _StopTimer4
-                  0x001c5a                  _BufferInit
-                  0x001c6e                  _BufferEnqueue
-                  0x001cce                  _BufferDequeue
-                  0x001d28                  _CRC16
-                  0x001d82                  _CumulativeSumCalculate
-                  0x001db6                  _SendAckMesssage
-                  0x001de4                  _ExecuteFunctioncode
-                  0x001e1e                  _InitDeviceIO
-                  0x001e30                  _Delay_ms
-                  0x001e82                  ___delay32
+                  0x000e36                  _ReadRx0Frame
+                  0x000ed4                  _GetReciveRX0EID
+                  0x000f32                  __C1Interrupt
+                  0x000fde                  _ReciveFrameDataInit
+                  0x000ff8                  _FrameQueneIn
+                  0x001028                  _FrameQueneOut
+                  0x00106a                  _ReciveBufferDataSimpleDealing
+                  0x0011e6                  _ReciveBufferDataDealing
+                  0x001338                  _GenRTUFrame
+                  0x0013c8                  _GenRTUFrameCumulativeSum
+                  0x00145e                  _SendFrame
+                  0x001496                  _main
+                  0x0016cc                  _SendCANState
+                  0x001732                  _InitUART1
+                  0x001796                  _InitPortsUART1
+                  0x0017a4                  _UsartInit
+                  0x0017b0                  _UsartRecive
+                  0x0017b8                  _InitUART2
+                  0x00181c                  _InitPortsUART2
+                  0x001826                  _Usart2Send
+                  0x001850                  _Usart2SendData
+                  0x00189c                  _Usart1Send
+                  0x0018b6                  _Usart1SendData
+                  0x0018ee                  _UsartSend
+                  0x0018fa                  _UsartSendData
+                  0x001906                  __U1RXInterrupt
+                  0x00192c                  __U1TXInterrupt
+                  0x001934                  __U2RXInterrupt
+                  0x00195a                  __U2TXInterrupt
+                  0x001962                  _WriteWord_EEPROM
+                  0x0019f4                  _ReadWord_EEPROM
+                  0x001a0e                  _ReadEEPROM
+                  0x001a7e                  _WriteEEPROM
+                  0x001b16                  _Init_Timer1
+                  0x001b5c                  _StartTimer1
+                  0x001b66                  _ResetTimer1
+                  0x001b76                  _SetTimer2
+                  0x001bb8                  _StartTimer2
+                  0x001bc8                  _StopTimer2
+                  0x001bd2                  _SetTimer3
+                  0x001c14                  _StartTimer3
+                  0x001c24                  _StopTimer3
+                  0x001c2e                  _SetTimer4
+                  0x001c70                  _StartTimer4
+                  0x001c82                  _StopTimer4
+                  0x001c8e                  _BufferInit
+                  0x001ca2                  _BufferEnqueue
+                  0x001d02                  _BufferDequeue
+                  0x001d5c                  _CRC16
+                  0x001db6                  _CumulativeSumCalculate
+                  0x001dea                  _SendAckMesssage
+                  0x001e18                  _ExecuteFunctioncode
+                  0x001e52                  _InitDeviceIO
+                  0x001e64                  _Delay_ms
+                  0x001eb6                  ___delay32
                   0xf8000a                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x001cce                  _BufferDequeue
-                  0x001c6e                  _BufferEnqueue
-                  0x001c5a                  _BufferInit
+                  0x001d02                  _BufferDequeue
+                  0x001ca2                  _BufferEnqueue
+                  0x001c8e                  _BufferInit
                   0x000bd8                  _CANSendData
-                  0x001d28                  _CRC16
+                  0x001d5c                  _CRC16
                   0x000756                  _ConfigCANOneBraud
                   0x000792                  _ConfigCANOneMaskFilterRX0
                   0x0007d0                  _ConfigCANOneMaskFilterRX1
                   0x000992                  _ConfigDataTXB0
                   0x000a54                  _ConfigDataTXB1
                   0x000b16                  _ConfigDataTXB2
-                  0x001d82                  _CumulativeSumCalculate
-                  0x001e30                  _Delay_ms
-                  0x001de4                  _ExecuteFunctioncode
-                  0x000fc4                  _FrameQueneIn
-                  0x000ff4                  _FrameQueneOut
-                  0x001304                  _GenRTUFrame
-                  0x001394                  _GenRTUFrameCumulativeSum
-                  0x000ea2                  _GetReciveRX0EID
+                  0x001db6                  _CumulativeSumCalculate
+                  0x001e64                  _Delay_ms
+                  0x001e18                  _ExecuteFunctioncode
+                  0x000ff8                  _FrameQueneIn
+                  0x001028                  _FrameQueneOut
+                  0x001338                  _GenRTUFrame
+                  0x0013c8                  _GenRTUFrameCumulativeSum
+                  0x000ed4                  _GetReciveRX0EID
                   0x000862                  _InitCANOne
-                  0x001e1e                  _InitDeviceIO
-                  0x001762                  _InitPortsUART1
-                  0x0017e8                  _InitPortsUART2
+                  0x001e52                  _InitDeviceIO
+                  0x001796                  _InitPortsUART1
+                  0x00181c                  _InitPortsUART2
                   0x0008da                  _InitStandardCAN
-                  0x0016fe                  _InitUART1
-                  0x001784                  _InitUART2
-                  0x001ae2                  _Init_Timer1
-                  0x0019da                  _ReadEEPROM
-                  0x000e04                  _ReadRx0Frame
-                  0x0019c0                  _ReadWord_EEPROM
-                  0x0011b2                  _ReciveBufferDataDealing
-                  0x001036                  _ReciveBufferDataSimpleDealing
-                  0x000faa                  _ReciveFrameDataInit
-                  0x001b32                  _ResetTimer1
-                  0x001db6                  _SendAckMesssage
-                  0x00167a                  _SendCANState
-                  0x00142a                  _SendFrame
-                  0x001b42                  _SetTimer2
-                  0x001b9e                  _SetTimer3
-                  0x001bfa                  _SetTimer4
-                  0x001b28                  _StartTimer1
-                  0x001b84                  _StartTimer2
-                  0x001be0                  _StartTimer3
-                  0x001c3c                  _StartTimer4
-                  0x001b94                  _StopTimer2
-                  0x001bf0                  _StopTimer3
-                  0x001c4e                  _StopTimer4
-                  0x001868                  _Usart1Send
-                  0x001882                  _Usart1SendData
-                  0x0017f2                  _Usart2Send
-                  0x00181c                  _Usart2SendData
-                  0x001770                  _UsartInit
-                  0x00177c                  _UsartRecive
-                  0x0018ba                  _UsartSend
-                  0x0018c6                  _UsartSendData
-                  0x001a4a                  _WriteEEPROM
-                  0x00192e                  _WriteWord_EEPROM
+                  0x001732                  _InitUART1
+                  0x0017b8                  _InitUART2
+                  0x001b16                  _Init_Timer1
+                  0x001a0e                  _ReadEEPROM
+                  0x000e36                  _ReadRx0Frame
+                  0x0019f4                  _ReadWord_EEPROM
+                  0x0011e6                  _ReciveBufferDataDealing
+                  0x00106a                  _ReciveBufferDataSimpleDealing
+                  0x000fde                  _ReciveFrameDataInit
+                  0x001b66                  _ResetTimer1
+                  0x001dea                  _SendAckMesssage
+                  0x0016cc                  _SendCANState
+                  0x00145e                  _SendFrame
+                  0x001b76                  _SetTimer2
+                  0x001bd2                  _SetTimer3
+                  0x001c2e                  _SetTimer4
+                  0x001b5c                  _StartTimer1
+                  0x001bb8                  _StartTimer2
+                  0x001c14                  _StartTimer3
+                  0x001c70                  _StartTimer4
+                  0x001bc8                  _StopTimer2
+                  0x001c24                  _StopTimer3
+                  0x001c82                  _StopTimer4
+                  0x00189c                  _Usart1Send
+                  0x0018b6                  _Usart1SendData
+                  0x001826                  _Usart2Send
+                  0x001850                  _Usart2SendData
+                  0x0017a4                  _UsartInit
+                  0x0017b0                  _UsartRecive
+                  0x0018ee                  _UsartSend
+                  0x0018fa                  _UsartSendData
+                  0x001a7e                  _WriteEEPROM
+                  0x001962                  _WriteWord_EEPROM
                   0x0001ae                  __AddressError
                   0x0001c6                  __AltAddressError
                   0x0001d2                  __AltMathError
                   0x0001c0                  __AltOscillatorFail
                   0x0001cc                  __AltStackError
-                  0x000f00                  __C1Interrupt
+                  0x000f32                  __C1Interrupt
                   0x0001d8                  __DefaultInterrupt
                   0xf8000a                  __FGS.sec
                   0x0001ba                  __MathError
                   0x0001a8                  __OscillatorFail
                   0x0001b4                  __StackError
-                  0x0018d2                  __U1RXInterrupt
-                  0x0018f8                  __U1TXInterrupt
-                  0x001900                  __U2RXInterrupt
-                  0x001926                  __U2TXInterrupt
+                  0x001906                  __U1RXInterrupt
+                  0x00192c                  __U1TXInterrupt
+                  0x001934                  __U2RXInterrupt
+                  0x00195a                  __U2TXInterrupt
                   0x000264                  ___addsf3
-                  0x001e82                  ___delay32
+                  0x001eb6                  ___delay32
                   0x00031e                  ___divsf3
                   0x0003a2                  ___fixunssfsi
                   0x0004ea                  ___floatundisf
@@ -450,7 +450,7 @@ External Symbols in Program Memory (by name):
                   0x000100                  __resetPRI
                   0x000556                  _auchCRCHi
                   0x000656                  _auchCRCLo
-                  0x001462                  _main
+                  0x001496                  _main
                   0x000548                  _memcpy
 
 Memory Configuration
@@ -636,7 +636,7 @@ userdata
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x815e
+.debug_info       0x000000       0x7e6d
  *(.debug_info)
  .debug_info      0x000000        0x355 build/default/production/Source/CANTransmission/Buffer.o
  .debug_info      0x000355        0x2bb build/default/production/Source/Driver/DeviceIO.o
@@ -648,10 +648,10 @@ userdata
  .debug_info      0x006147        0x2e3 build/default/production/Source/SerialPort/Action.o
  .debug_info      0x00642a        0x2eb build/default/production/Source/SerialPort/CRC16.o
  .debug_info      0x006715        0xc2a build/default/production/Source/SerialPort/RtuFrame.o
- .debug_info      0x00733f        0xe1f build/default/production/Source/main.o
+ .debug_info      0x00733f        0xb2e build/default/production/Source/main.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0xd4a
+.debug_abbrev     0x000000        0xd48
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x102 build/default/production/Source/CANTransmission/Buffer.o
  .debug_abbrev    0x000102         0xc1 build/default/production/Source/Driver/DeviceIO.o
@@ -663,9 +663,9 @@ userdata
  .debug_abbrev    0x000843         0xc1 build/default/production/Source/SerialPort/Action.o
  .debug_abbrev    0x000904         0xce build/default/production/Source/SerialPort/CRC16.o
  .debug_abbrev    0x0009d2        0x1f8 build/default/production/Source/SerialPort/RtuFrame.o
- .debug_abbrev    0x000bca        0x180 build/default/production/Source/main.o
+ .debug_abbrev    0x000bca        0x17e build/default/production/Source/main.o
 
-.debug_line       0x000000        0xf76
+.debug_line       0x000000        0xf83
  *(.debug_line)
  .debug_line      0x000000         0xd0 build/default/production/Source/CANTransmission/Buffer.o
  .debug_line      0x0000d0        0x102 build/default/production/Source/Driver/DeviceIO.o
@@ -673,11 +673,11 @@ userdata
  .debug_line      0x000394        0x15e build/default/production/Source/Driver/Timer.o
  .debug_line      0x0004f2        0x18c build/default/production/Source/Driver/Usart.o
  .debug_line      0x00067e         0xb7 build/default/production/Source/Driver/traps.o
- .debug_line      0x000735        0x271 build/default/production/Source/Driver/CAN.o
- .debug_line      0x0009a6        0x105 build/default/production/Source/SerialPort/Action.o
- .debug_line      0x000aab         0xd6 build/default/production/Source/SerialPort/CRC16.o
- .debug_line      0x000b81        0x231 build/default/production/Source/SerialPort/RtuFrame.o
- .debug_line      0x000db2        0x1c4 build/default/production/Source/main.o
+ .debug_line      0x000735        0x27c build/default/production/Source/Driver/CAN.o
+ .debug_line      0x0009b1        0x105 build/default/production/Source/SerialPort/Action.o
+ .debug_line      0x000ab6         0xd6 build/default/production/Source/SerialPort/CRC16.o
+ .debug_line      0x000b8c        0x231 build/default/production/Source/SerialPort/RtuFrame.o
+ .debug_line      0x000dbd        0x1c6 build/default/production/Source/main.o
 
 .debug_frame      0x000000        0x90c
  *(.debug_frame)
@@ -693,7 +693,7 @@ userdata
  .debug_frame     0x0007cc         0xf4 build/default/production/Source/SerialPort/RtuFrame.o
  .debug_frame     0x0008c0         0x4c build/default/production/Source/main.o
 
-.debug_str        0x000000        0x4e6
+.debug_str        0x000000        0x4d2
  *(.debug_str)
  .debug_str       0x000000          0xa build/default/production/Source/CANTransmission/Buffer.o
  .debug_str       0x00000a          0xa build/default/production/Source/Driver/DeviceIO.o
@@ -705,7 +705,7 @@ userdata
  .debug_str       0x000355          0xe build/default/production/Source/SerialPort/Action.o
  .debug_str       0x000363         0x14 build/default/production/Source/SerialPort/CRC16.o
  .debug_str       0x000377         0xcf build/default/production/Source/SerialPort/RtuFrame.o
- .debug_str       0x000446         0xa0 build/default/production/Source/main.o
+ .debug_str       0x000446         0x8c build/default/production/Source/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -1480,7 +1480,7 @@ LOAD data_init
 LOAD shared_data_init
 
 .debug_pubtypes
-                  0x000108        0xacc
+                  0x000108        0xa8e
  .debug_pubtypes
                   0x000108         0x4a build/default/production/Source/CANTransmission/Buffer.o
  .debug_pubtypes
@@ -1502,117 +1502,117 @@ LOAD shared_data_init
  .debug_pubtypes
                   0x0009b7         0xbc build/default/production/Source/SerialPort/RtuFrame.o
  .debug_pubtypes
-                  0x000a73        0x161 build/default/production/Source/main.o
+                  0x000a73        0x123 build/default/production/Source/main.o
 
 __c30_signature
-                  0x000bd4         0xa2
+                  0x000b96         0xa2
  __c30_signature
-                  0x000bd4          0x6 build/default/production/Source/CANTransmission/Buffer.o
+                  0x000b96          0x6 build/default/production/Source/CANTransmission/Buffer.o
  __c30_signature
-                  0x000bda          0x6 build/default/production/Source/Driver/DeviceIO.o
+                  0x000b9c          0x6 build/default/production/Source/Driver/DeviceIO.o
  __c30_signature
-                  0x000be0          0x6 build/default/production/Source/Driver/EEPROMOperate.o
+                  0x000ba2          0x6 build/default/production/Source/Driver/EEPROMOperate.o
  __c30_signature
-                  0x000be6          0x6 build/default/production/Source/Driver/Timer.o
+                  0x000ba8          0x6 build/default/production/Source/Driver/Timer.o
  __c30_signature
-                  0x000bec          0x6 build/default/production/Source/Driver/Usart.o
+                  0x000bae          0x6 build/default/production/Source/Driver/Usart.o
  __c30_signature
-                  0x000bf2          0x6 build/default/production/Source/Driver/traps.o
+                  0x000bb4          0x6 build/default/production/Source/Driver/traps.o
  __c30_signature
-                  0x000bf8          0x6 build/default/production/Source/Driver/CAN.o
+                  0x000bba          0x6 build/default/production/Source/Driver/CAN.o
  __c30_signature
-                  0x000bfe          0x6 build/default/production/Source/SerialPort/Action.o
+                  0x000bc0          0x6 build/default/production/Source/SerialPort/Action.o
  __c30_signature
-                  0x000c04          0x6 build/default/production/Source/SerialPort/CRC16.o
+                  0x000bc6          0x6 build/default/production/Source/SerialPort/CRC16.o
  __c30_signature
-                  0x000c0a          0x6 build/default/production/Source/SerialPort/RtuFrame.o
+                  0x000bcc          0x6 build/default/production/Source/SerialPort/RtuFrame.o
  __c30_signature
-                  0x000c10          0x6 build/default/production/Source/main.o
+                  0x000bd2          0x6 build/default/production/Source/main.o
  __c30_signature
-                  0x000c16          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
+                  0x000bd8          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x000c1c          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
+                  0x000bde          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
  __c30_signature
-                  0x000c22          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(eedata_helper.Leo)
+                  0x000be4          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(eedata_helper.Leo)
  __c30_signature
-                  0x000c28          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(memcpy_helper.Leo)
+                  0x000bea          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(memcpy_helper.Leo)
  __c30_signature
-                  0x000c2e          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
+                  0x000bf0          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
  __c30_signature
-                  0x000c34          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(addsf3.eo)
+                  0x000bf6          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(addsf3.eo)
  __c30_signature
-                  0x000c3a          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(divsf3.eo)
+                  0x000bfc          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(divsf3.eo)
  __c30_signature
-                  0x000c40          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(fixunssfsi.eo)
+                  0x000c02          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(fixunssfsi.eo)
  __c30_signature
-                  0x000c46          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
+                  0x000c08          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(floatunsisf.eo)
  __c30_signature
-                  0x000c4c          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(fpack.eo)
+                  0x000c0e          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(fpack.eo)
  __c30_signature
-                  0x000c52          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(funpack.eo)
+                  0x000c14          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(funpack.eo)
  __c30_signature
-                  0x000c58          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(funpack2.eo)
+                  0x000c1a          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(funpack2.eo)
  __c30_signature
-                  0x000c5e          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(futil.eo)
+                  0x000c20          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(futil.eo)
  __c30_signature
-                  0x000c64          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
+                  0x000c26          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(mulsf3.eo)
  __c30_signature
-                  0x000c6a          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
+                  0x000c2c          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\libm-elf.a(floatundisf.eo)
  __c30_signature
-                  0x000c70          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-c-elf.a(memcpy.XXeo)
+                  0x000c32          0x6 f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-c-elf.a(memcpy.XXeo)
 
-.nbss               0x0800        0x4c2
- .nbss              0x0800        0x2a8 build/default/production/Source/CANTransmission/Buffer.o
+.nbss               0x0800        0x5a2
+ .nbss              0x0800        0x388 build/default/production/Source/CANTransmission/Buffer.o
                     0x0800                  _CanMsg
-                    0x0aa0                  _FifoInfor
-                    0x0aa6                  _len
- .nbss              0x0aa8        0x196 build/default/production/Source/SerialPort/RtuFrame.o
-                    0x0aa8                  _g_ReciveBufferLen
-                    0x0aa9                  _g_ReciveBuffer
-                    0x0ba9                  _FifoHead
-                    0x0baa                  _FifoEnd
-                    0x0bab                  _DealStep
-                    0x0bac                  _FrameData
-                    0x0bec                  _RtuFrame
-                    0x0bfc                  _completeFlag
-                    0x0bfd                  _ReciveIndex
-                    0x0bfe                  _SendFrameData
- .nbss              0x0c3e         0x4a build/default/production/Source/main.o
-                    0x0c3e                  _sendFrame
-                    0x0c46                  _recvFrame
-                    0x0c4e                  _ReciveMsg
-                    0x0c5c                  _SendData
-                    0x0c68                  _SendPacket
-                    0x0c7c                  _Point
-                    0x0c80                  _CanOverTimeCount
-                    0x0c84                  _UartOverTimeCount
- .nbss              0x0c88         0x30 build/default/production/Source/Driver/CAN.o
-                    0x0c88                  _g_CANStatus
-                    0x0c8a                  _CAN_TxMsg
-                    0x0c98                  _CAN_RxMsg
-                    0x0ca6                  _CAN_TxRdy
-                    0x0ca8                  _CAN_RxRdy
-                    0x0caa                  _Rframe
-                    0x0cb2                  _rlen
-                    0x0cb4                  _rEID
- .nbss              0x0cb8          0x6 build/default/production/Source/Driver/Timer.o
-                    0x0cb8                  _TPRCount
-                    0x0cba                  _TPR3Count
-                    0x0cbc                  _TPR4Count
- .nbss              0x0cbe          0x4 build/default/production/Source/SerialPort/Action.o
-                    0x0cbe                  _OverTime
-                    0x0cc0                  _OverTimeCn
+                    0x0b80                  _FifoInfor
+                    0x0b86                  _len
+ .nbss              0x0b88        0x196 build/default/production/Source/SerialPort/RtuFrame.o
+                    0x0b88                  _g_ReciveBufferLen
+                    0x0b89                  _g_ReciveBuffer
+                    0x0c89                  _FifoHead
+                    0x0c8a                  _FifoEnd
+                    0x0c8b                  _DealStep
+                    0x0c8c                  _FrameData
+                    0x0ccc                  _RtuFrame
+                    0x0cdc                  _completeFlag
+                    0x0cdd                  _ReciveIndex
+                    0x0cde                  _SendFrameData
+ .nbss              0x0d1e         0x4a build/default/production/Source/main.o
+                    0x0d1e                  _sendFrame
+                    0x0d26                  _recvFrame
+                    0x0d2e                  _ReciveMsg
+                    0x0d3c                  _SendData
+                    0x0d48                  _SendPacket
+                    0x0d5c                  _Point
+                    0x0d60                  _CanOverTimeCount
+                    0x0d64                  _UartOverTimeCount
+ .nbss              0x0d68         0x30 build/default/production/Source/Driver/CAN.o
+                    0x0d68                  _g_CANStatus
+                    0x0d6a                  _CAN_TxMsg
+                    0x0d78                  _CAN_RxMsg
+                    0x0d86                  _CAN_TxRdy
+                    0x0d88                  _CAN_RxRdy
+                    0x0d8a                  _Rframe
+                    0x0d92                  _rlen
+                    0x0d94                  _rEID
+ .nbss              0x0d98          0x6 build/default/production/Source/Driver/Timer.o
+                    0x0d98                  _TPRCount
+                    0x0d9a                  _TPR3Count
+                    0x0d9c                  _TPR4Count
+ .nbss              0x0d9e          0x4 build/default/production/Source/SerialPort/Action.o
+                    0x0d9e                  _OverTime
+                    0x0da0                  _OverTimeCn
 
 _0497F0005967fa92
-                    0x0cc2          0x2
+                    0x0da2          0x2
  _0497F0005967fa92
-                    0x0cc2          0x2 build/default/production/Source/SerialPort/Action.o
-                    0x0cc2                  _ReceiveStateFlag
+                    0x0da2          0x2 build/default/production/Source/SerialPort/Action.o
+                    0x0da2                  _ReceiveStateFlag
 
-.ndata              0x0cc4          0x2
- .ndata             0x0cc4          0x2 build/default/production/Source/SerialPort/RtuFrame.o
-                    0x0cc4                  _ReciveErrorFlag
-                    0x0cc5                  _LocalAddress
+.ndata              0x0da4          0x2
+ .ndata             0x0da4          0x2 build/default/production/Source/SerialPort/RtuFrame.o
+                    0x0da4                  _ReciveErrorFlag
+                    0x0da5                  _LocalAddress
 
 .ivt._U1RXInterrupt
                   0x000026          0x2
@@ -1698,8 +1698,8 @@ _0497F0005967fa92
                     0x8556                  _auchCRCHi
                     0x8656                  _auchCRCLo
 
-.text             0x000756       0x16fe
- .text            0x000756        0x854 build/default/production/Source/Driver/CAN.o
+.text             0x000756       0x1732
+ .text            0x000756        0x888 build/default/production/Source/Driver/CAN.o
                   0x000756                  _ConfigCANOneBraud
                   0x000792                  _ConfigCANOneMaskFilterRX0
                   0x0007d0                  _ConfigCANOneMaskFilterRX1
@@ -1709,76 +1709,76 @@ _0497F0005967fa92
                   0x000a54                  _ConfigDataTXB1
                   0x000b16                  _ConfigDataTXB2
                   0x000bd8                  _CANSendData
-                  0x000e04                  _ReadRx0Frame
-                  0x000ea2                  _GetReciveRX0EID
-                  0x000f00                  __C1Interrupt
- .text            0x000faa        0x4b8 build/default/production/Source/SerialPort/RtuFrame.o
-                  0x000faa                  _ReciveFrameDataInit
-                  0x000fc4                  _FrameQueneIn
-                  0x000ff4                  _FrameQueneOut
-                  0x001036                  _ReciveBufferDataSimpleDealing
-                  0x0011b2                  _ReciveBufferDataDealing
-                  0x001304                  _GenRTUFrame
-                  0x001394                  _GenRTUFrameCumulativeSum
-                  0x00142a                  _SendFrame
- .text            0x001462        0x29c build/default/production/Source/main.o
-                  0x001462                  _main
-                  0x00167a                  _SendCANState
- .text            0x0016fe        0x230 build/default/production/Source/Driver/Usart.o
-                  0x0016fe                  _InitUART1
-                  0x001762                  _InitPortsUART1
-                  0x001770                  _UsartInit
-                  0x00177c                  _UsartRecive
-                  0x001784                  _InitUART2
-                  0x0017e8                  _InitPortsUART2
-                  0x0017f2                  _Usart2Send
-                  0x00181c                  _Usart2SendData
-                  0x001868                  _Usart1Send
-                  0x001882                  _Usart1SendData
-                  0x0018ba                  _UsartSend
-                  0x0018c6                  _UsartSendData
-                  0x0018d2                  __U1RXInterrupt
-                  0x0018f8                  __U1TXInterrupt
-                  0x001900                  __U2RXInterrupt
-                  0x001926                  __U2TXInterrupt
- .text            0x00192e        0x1b4 build/default/production/Source/Driver/EEPROMOperate.o
-                  0x00192e                  _WriteWord_EEPROM
-                  0x0019c0                  _ReadWord_EEPROM
-                  0x0019da                  _ReadEEPROM
-                  0x001a4a                  _WriteEEPROM
- .text            0x001ae2        0x178 build/default/production/Source/Driver/Timer.o
-                  0x001ae2                  _Init_Timer1
-                  0x001b28                  _StartTimer1
-                  0x001b32                  _ResetTimer1
-                  0x001b42                  _SetTimer2
-                  0x001b84                  _StartTimer2
-                  0x001b94                  _StopTimer2
-                  0x001b9e                  _SetTimer3
-                  0x001be0                  _StartTimer3
-                  0x001bf0                  _StopTimer3
-                  0x001bfa                  _SetTimer4
-                  0x001c3c                  _StartTimer4
-                  0x001c4e                  _StopTimer4
- .text            0x001c5a         0xce build/default/production/Source/CANTransmission/Buffer.o
-                  0x001c5a                  _BufferInit
-                  0x001c6e                  _BufferEnqueue
-                  0x001cce                  _BufferDequeue
- .text            0x001d28         0x8e build/default/production/Source/SerialPort/CRC16.o
-                  0x001d28                  _CRC16
-                  0x001d82                  _CumulativeSumCalculate
- .text            0x001db6         0x68 build/default/production/Source/SerialPort/Action.o
-                  0x001db6                  _SendAckMesssage
-                  0x001de4                  _ExecuteFunctioncode
- .text            0x001e1e         0x36 build/default/production/Source/Driver/DeviceIO.o
-                  0x001e1e                  _InitDeviceIO
-                  0x001e30                  _Delay_ms
+                  0x000e36                  _ReadRx0Frame
+                  0x000ed4                  _GetReciveRX0EID
+                  0x000f32                  __C1Interrupt
+ .text            0x000fde        0x4b8 build/default/production/Source/SerialPort/RtuFrame.o
+                  0x000fde                  _ReciveFrameDataInit
+                  0x000ff8                  _FrameQueneIn
+                  0x001028                  _FrameQueneOut
+                  0x00106a                  _ReciveBufferDataSimpleDealing
+                  0x0011e6                  _ReciveBufferDataDealing
+                  0x001338                  _GenRTUFrame
+                  0x0013c8                  _GenRTUFrameCumulativeSum
+                  0x00145e                  _SendFrame
+ .text            0x001496        0x29c build/default/production/Source/main.o
+                  0x001496                  _main
+                  0x0016cc                  _SendCANState
+ .text            0x001732        0x230 build/default/production/Source/Driver/Usart.o
+                  0x001732                  _InitUART1
+                  0x001796                  _InitPortsUART1
+                  0x0017a4                  _UsartInit
+                  0x0017b0                  _UsartRecive
+                  0x0017b8                  _InitUART2
+                  0x00181c                  _InitPortsUART2
+                  0x001826                  _Usart2Send
+                  0x001850                  _Usart2SendData
+                  0x00189c                  _Usart1Send
+                  0x0018b6                  _Usart1SendData
+                  0x0018ee                  _UsartSend
+                  0x0018fa                  _UsartSendData
+                  0x001906                  __U1RXInterrupt
+                  0x00192c                  __U1TXInterrupt
+                  0x001934                  __U2RXInterrupt
+                  0x00195a                  __U2TXInterrupt
+ .text            0x001962        0x1b4 build/default/production/Source/Driver/EEPROMOperate.o
+                  0x001962                  _WriteWord_EEPROM
+                  0x0019f4                  _ReadWord_EEPROM
+                  0x001a0e                  _ReadEEPROM
+                  0x001a7e                  _WriteEEPROM
+ .text            0x001b16        0x178 build/default/production/Source/Driver/Timer.o
+                  0x001b16                  _Init_Timer1
+                  0x001b5c                  _StartTimer1
+                  0x001b66                  _ResetTimer1
+                  0x001b76                  _SetTimer2
+                  0x001bb8                  _StartTimer2
+                  0x001bc8                  _StopTimer2
+                  0x001bd2                  _SetTimer3
+                  0x001c14                  _StartTimer3
+                  0x001c24                  _StopTimer3
+                  0x001c2e                  _SetTimer4
+                  0x001c70                  _StartTimer4
+                  0x001c82                  _StopTimer4
+ .text            0x001c8e         0xce build/default/production/Source/CANTransmission/Buffer.o
+                  0x001c8e                  _BufferInit
+                  0x001ca2                  _BufferEnqueue
+                  0x001d02                  _BufferDequeue
+ .text            0x001d5c         0x8e build/default/production/Source/SerialPort/CRC16.o
+                  0x001d5c                  _CRC16
+                  0x001db6                  _CumulativeSumCalculate
+ .text            0x001dea         0x68 build/default/production/Source/SerialPort/Action.o
+                  0x001dea                  _SendAckMesssage
+                  0x001e18                  _ExecuteFunctioncode
+ .text            0x001e52         0x36 build/default/production/Source/Driver/DeviceIO.o
+                  0x001e52                  _InitDeviceIO
+                  0x001e64                  _Delay_ms
 
-.dinit            0x001e54         0x2e
- .dinit           0x001e54         0x2e data_init
+.dinit            0x001e88         0x2e
+ .dinit           0x001e88         0x2e data_init
 
-.init.delay32     0x001e82         0x1c
- .init.delay32    0x001e82         0x1c f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
-                  0x001e82                  ___delay32
+.init.delay32     0x001eb6         0x1c
+ .init.delay32    0x001eb6         0x1c f:/program files (x86)/microchip/xc16/v1.26/bin/bin/../../lib\liblega-pic30-elf.a(delay32.Leo)
+                  0x001eb6                  ___delay32
 
-.shared.dinit     0x001e9e          0x2
- .shared.dinit    0x001e9e          0x2 shared_data_init
+.shared.dinit     0x001ed2          0x2
+ .shared.dinit    0x001ed2          0x2 shared_data_init

@@ -4,11 +4,11 @@
 #define TRUE 0xFF
 #define FALSE 0
 
-#define BUFFER_LEN  48
+#define BUFFER_LEN  64
 #include <xc.h>
 
 /**
- *缓冲空间，暂定为32个 
+ *缓冲空间，暂定为64个 
  */
 CAN_msg CanMsg[BUFFER_LEN];
 
