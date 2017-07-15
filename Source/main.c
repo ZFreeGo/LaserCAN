@@ -62,7 +62,7 @@ uint8_t SendPacket[20];
   *最后CAN接收接收计数，进行时间计数若长时间未收到信息认为发生错误。
   */
  uint32_t CanOverTimeCount;
- uint32_t UartOverTimeCount;
+
  
 void SendCANState(void);
 
@@ -117,12 +117,11 @@ int main()
     sendFrame.address =  LOCAL_ADDRESS; //本机接收地址处理
     ClrWdt(); //21cys
     
-    CanOverTimeCount = 0;
-    UartOverTimeCount = 0;
+    CanOverTimeCount = 0;  
     cn = 0;
     BufferInit();
     InitStandardCAN(0, 0);     
-
+    INTCON1bits.NSTDIS = 1;//禁止中断嵌套
   
 
     Point.pData = SendPacket;
@@ -131,8 +130,7 @@ int main()
         result = ReciveBufferDataSimpleDealing(&sendFrame, &recvFrame);//返回剩余长度
         ClrWdt();
         if (recvFrame.completeFlag == TRUE)
-        {
-            UartOverTimeCount = 0;
+        {           
             LEDB = 1 - LEDB;
             //将数据帧发送出去
             uint16_t id = recvFrame.pData[3] |(((uint16_t)recvFrame.pData[4])<<8);   
@@ -186,11 +184,7 @@ int main()
          {
              Reset();
          }
-         //UART长时间未收到信息超时复位 约15s
-         if (UartOverTimeCount ++ > 3000000)//
-         {
-             Reset();
-         }
+
          ClrWdt();
          if (C1INTFbits.TXBO)
          {
